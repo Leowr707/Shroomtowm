@@ -19,7 +19,7 @@ public class Inimigo : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Player n�o encontrado!");
+            Debug.LogError("Player nao encontrado!");
         }
     }
 
@@ -30,11 +30,11 @@ public class Inimigo : MonoBehaviour
             return;
         }
 
-        // Movimenta��o suave nos eixos X e Y
+        // Movimentacao suave nos eixos X e Y
         Vector2 movement = Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
         transform.position = new Vector3(movement.x, movement.y, 0f);
 
-        // Colis�o com o jogador
+        // Colisor com o jogador
         if (Vector3.Distance(transform.position, playerTransform.position) < collisionDistance)
         {
             Vector3 collisionDirection = playerTransform.position - transform.position;
