@@ -9,6 +9,22 @@ public class Nave : MonoBehaviour
     public float maxSpeed = 20f; // velocidade máxima da nave
     public float impulseForce = 10f; // força de impulso aplicada à nave
 
+
+    [Header("Configurações de tipo e spawn")]
+    public GameObject projetil; //onde coloca o projetil
+    public Transform spawnPoint; //onde o tiro vai spawnar
+    public GameObject tiroEspecial;
+
+    [Header("Configurações do tiro normal")]
+    public float intervaloTiro = 1;
+    float tiroInicial, proximoTiro;
+    public int tempoDestruicaoTiro = 5;
+
+    [Header("Configurações do tiro Especial")]
+    public float intervaloTiroEspecial = 1;
+    float tiroInicialEspecial, proximoTiroEspecial;
+    public int tempoDestruicaoTiroEspecial = 5;
+
     private Rigidbody rb; // referência ao Rigidbody da nave
 
     private void Start()
@@ -20,6 +36,10 @@ public class Nave : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        Atirar();
+        AtirarEspecial();
+
         float horizontal = Input.GetAxis("Horizontal"); // recebe a entrada dos botões A e D
         float vertical = Input.GetAxis("Vertical"); // recebe a entrada do botão W
 
@@ -46,4 +66,54 @@ public class Nave : MonoBehaviour
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
     }
+
+    void Atirar()
+    {
+        // Verifica se o jogador apertou a tecla de espaço
+        // Se apertou, vai criar o tiro
+        tiroInicial = tiroInicial + Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space) && tiroInicial > proximoTiro)
+        {
+           
+
+            proximoTiro = tiroInicial + intervaloTiro;
+
+            // Vai criar na tela um projetil, em uma determinada posição, com uma rotação
+            // spawnPoint.position -> Representa o ponto onde o projetil vai ser criado
+            // spawnPoint.rotation -> Rotação que o projetil criado vai possuir
+            GameObject tiro = Instantiate(projetil, spawnPoint.position, spawnPoint.transform.rotation);
+            //obj.GetComponent<bullet>();
+
+            proximoTiro = proximoTiro - tiroInicial;
+            tiroInicial = 0.0f;
+            Destroy(tiro, tempoDestruicaoTiro);
+        }
+    }
+
+    void AtirarEspecial()
+    {
+        // Verifica se o jogador apertou a tecla de espaço
+        // Se apertou, vai criar o tiro
+        tiroInicialEspecial = tiroInicialEspecial + Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && tiroInicialEspecial > proximoTiroEspecial)
+        {
+
+            proximoTiroEspecial = tiroInicialEspecial + intervaloTiroEspecial;
+
+            // Vai criar na tela um projetil, em uma determinada posição, com uma rotação
+            // spawnPoint.position -> Representa o ponto onde o projetil vai ser criado
+            // spawnPoint.rotation -> Rotação que o projetil criado vai possuir
+            GameObject TiroEspecial = Instantiate(tiroEspecial, spawnPoint.position, spawnPoint.transform.rotation);
+
+            proximoTiroEspecial = proximoTiroEspecial - tiroInicialEspecial;
+            tiroInicialEspecial = 0.0f;
+            Destroy(TiroEspecial, tempoDestruicaoTiroEspecial);
+        }
+    }
 }
+
+
+
+
