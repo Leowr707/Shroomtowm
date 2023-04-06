@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class Nave : MonoBehaviour
 {
+    [Header("Configurações básicas do player")]
     public float moveSpeed = 5f; // velocidade de movimento da nave
     public float rotateSpeed = 100f; // velocidade de rotação da nave
     public float maxSpeed = 20f; // velocidade máxima da nave
     public float impulseForce = 10f; // força de impulso aplicada à nave
+    public int vida = 3;
 
+    [Header("Configuração de textura")]
+    //material da nave quando ele tomar dano
+    public Material materialDano;
+    //material original da nave
+    public Material materialOriginal;
+    //isso aqui que aplica o material no inimigo 
+    MeshRenderer meshRenderer;
+    //quanto tempo a textura de dano ficará na tela
+    public float tempoTexturaDano;
 
     [Header("Configurações de tipo e spawn")]
     public GameObject projetil; //onde coloca o projetil
@@ -64,6 +75,34 @@ public class Nave : MonoBehaviour
         if (rb.velocity.magnitude > maxSpeed)
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;
+        }
+    }
+
+    private IEnumerator OnCollisionEnter(Collision objetoColidido)
+    {
+        if (objetoColidido.transform.tag == "tiroInimigo")
+        {
+            Destroy(objetoColidido.gameObject);
+
+            vida = vida - 1;
+            //muda a textura do inimigo pro material de dano quando tomar dano
+            meshRenderer.material = materialDano;
+            //vai executar algo depois que o TempoTexturaDanoPassar
+            yield return new WaitForSeconds(tempoTexturaDano);
+            //depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
+            meshRenderer.material = materialOriginal;
+
+            if (vida == 0)
+            {
+                /* ESSE CÓDIGO AQUI É A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
+                  int auxPontos = int.Parse(valorPontos.text)
+                      auxPontos = auxPontos + 200;
+                  valorPontos.text = auxPontos.ToString();
+                */
+
+                //destruirá esse gameObject quando a vida dele chegar em 0
+                Destroy(this.gameObject);
+            }
         }
     }
 

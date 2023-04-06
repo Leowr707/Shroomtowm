@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 352477714}
   - component: {fileID: 352477713}
   - component: {fileID: 352477717}
+  - component: {fileID: 352477718}
   m_Layer: 0
   m_Name: Inimigo
   m_TagString: Untagged
@@ -467,7 +468,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 83bc591000385f54187a4c03d2784ec7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -508,7 +509,8 @@ Transform:
   m_LocalPosition: {x: 8.44, y: 5.616, z: -0.05}
   m_LocalScale: {x: 0.95879143, y: 1.2736238, z: 2.1575265}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 360529079}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -527,6 +529,56 @@ MonoBehaviour:
   moveSpeed: 5
   collisionDistance: 1
   collisionSpeed: 10
+--- !u!114 &352477718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352477712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db23ff43e7b5bb346abde30725f91989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 3
+  materialDano: {fileID: 2100000, guid: 519c6bebaf1bb73459b1fab1a3159d24, type: 2}
+  materialOriginal: {fileID: 2100000, guid: 83bc591000385f54187a4c03d2784ec7, type: 2}
+  tempoTexturaDano: 0.4
+  prefabTiroInimigo: {fileID: 5702860720657688285, guid: dd5728894921dd34d91636898b658d0a, type: 3}
+  spawnPointDoTiroInimigo: {fileID: 360529078}
+  ativarTiro: 1
+--- !u!1 &360529078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 360529079}
+  m_Layer: 0
+  m_Name: spawnPointTiroInimigo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &360529079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360529078}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.7490437, z: 0}
+  m_LocalScale: {x: 1.0429797, y: 0.46349376, z: 0.7851612}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 352477716}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +932,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1672882788
@@ -903,7 +955,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 519c6bebaf1bb73459b1fab1a3159d24, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -942,7 +994,7 @@ Transform:
   m_GameObject: {fileID: 1672882785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.9, y: 73.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.825, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 803920726}
@@ -965,6 +1017,10 @@ MonoBehaviour:
   rotateSpeed: 300
   maxSpeed: 100
   impulseForce: 20
+  vida: 3
+  materialDano: {fileID: 2100000, guid: 83bc591000385f54187a4c03d2784ec7, type: 2}
+  materialOriginal: {fileID: 2100000, guid: 519c6bebaf1bb73459b1fab1a3159d24, type: 2}
+  tempoTexturaDano: 0.3
   projetil: {fileID: 5702860720657688285, guid: 01d3dcb460d43fe4d9da6f439bfcdad7, type: 3}
   spawnPoint: {fileID: 803920726}
   tiroEspecial: {fileID: 5702860720657688285, guid: e5413021d69d0b647bea70ba68163c7a, type: 3}

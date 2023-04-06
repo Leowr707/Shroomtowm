@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2945966938962446156}
   - component: {fileID: -2095892464075330828}
   m_Layer: 0
-  m_Name: tiro
-  m_TagString: tiroPlayer
+  m_Name: tiroInimigo
+  m_TagString: tiroInimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6795474697485911969
 MeshFilter:
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 20496bb526aafb74daf555d99a87a81b, type: 2}
+  - {fileID: 2100000, guid: 85c7015fbda0b9d4faaee645392e9c39, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
