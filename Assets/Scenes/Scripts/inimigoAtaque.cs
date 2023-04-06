@@ -61,6 +61,7 @@ public class inimigoAtaque : MonoBehaviour
 
                 //destruirá esse gameObject quando a vida dele chegar em 0
                 Destroy(this.gameObject);
+            
             }
         }
     }

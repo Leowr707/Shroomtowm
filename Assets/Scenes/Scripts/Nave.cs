@@ -101,7 +101,7 @@ public class Nave : MonoBehaviour
                 */
 
                 //destruirá esse gameObject quando a vida dele chegar em 0
-                Destroy(this.gameObject);
+                DestroyImmediate(this.gameObject, true);
             }
         }
     }
