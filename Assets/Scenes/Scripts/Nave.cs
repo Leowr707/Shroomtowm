@@ -92,7 +92,7 @@ public class Nave : MonoBehaviour
             //depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
             meshRenderer.material = materialOriginal;
 
-            if (vida == 0)
+            if (vida <= 0)
             {
                 /* ESSE CÓDIGO AQUI É A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
                   int auxPontos = int.Parse(valorPontos.text)
