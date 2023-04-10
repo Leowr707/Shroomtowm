@@ -25,7 +25,7 @@ public class itemDeCura : MonoBehaviour
     {
         mov = transform.position;
 
-        mov.y += 0.05f;
+        mov.y += 0.0f;
 
         transform.position = mov;
     }
