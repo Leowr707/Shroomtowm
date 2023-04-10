@@ -7,6 +7,9 @@ TagManager:
   - tiroInimigo
   - tiroPlayer
   - tiroEspecialPlayer
+  - barrier
+  - itemDeCura
+  - scoreText
   layers:
   - Default
   - TransparentFX

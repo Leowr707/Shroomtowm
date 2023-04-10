@@ -24,6 +24,9 @@ public class inimigoAtaque : MonoBehaviour
 
     [Header("Drop do inimigo")]
     public GameObject itemVida;
+    [Header("pontos Do Inimigo")]
+    public int points = 10;
+    public ScoreManager scoreManager;
 
 
     // Start is called before the first frame update
@@ -92,6 +95,7 @@ public class inimigoAtaque : MonoBehaviour
 
     }
     void Atirar()
+    
     {
         Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
         Destroy(prefabTiroInimigo, 5);
@@ -99,8 +103,11 @@ public class inimigoAtaque : MonoBehaviour
     public GameObject healthItem; //referencia ao objeto de cura que será deixado cair
 
     void OnDestroy() {
+    scoreManager.AddScore(points);
     Instantiate(healthItem, transform.position, transform.rotation); //cria uma cópia do objeto de cura na posição atual do inimigo que foi destruído
 }
+
+
 
 }
 
