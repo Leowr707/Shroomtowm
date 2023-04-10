@@ -22,6 +22,9 @@ public class inimigoAtaque : MonoBehaviour
     public GameObject spawnPointDoTiroInimigo;
     public bool ativarTiro;
 
+    [Header("Drop do inimigo")]
+    public GameObject itemVida;
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,30 @@ public class inimigoAtaque : MonoBehaviour
             
             }
         }
+
+        if (objetoColidido.transform.tag == "tiroEspecialPlayer")
+        {
+            Destroy(objetoColidido.gameObject);
+
+            vida = vida - 2;
+            //muda a textura do inimigo pro material de dano quando tomar dano
+            meshRenderer.material = materialDano;
+            //vai executar algo depois que o TempoTexturaDanoPassar
+            yield return new WaitForSeconds(tempoTexturaDano);
+            //depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
+            meshRenderer.material = materialOriginal;
+
+            if (vida <= 0)
+            {
+                
+                Destroy(this.gameObject);
+                Instantiate(itemVida);
+
+            }
+
+        }
+       
+
     }
     void Atirar()
     {

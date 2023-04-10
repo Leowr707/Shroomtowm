@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Nave : MonoBehaviour
 {
+
+    /*[Header("Gerando o player")]
+    public GameObject player;
+    GameObject playerClone;
+    public Transform spawnPointPlayer;*/
+
     [Header("Configurações básicas do player")]
     public float moveSpeed = 5f; // velocidade de movimento da nave
     public float rotateSpeed = 100f; // velocidade de rotação da nave
@@ -40,6 +46,13 @@ public class Nave : MonoBehaviour
 
     private void Start()
     {
+        
+        /* playerClone= Instantiate(player, spawnPointPlayer.transform.position, spawnPointPlayer.transform.rotation);
+
+        if(playerClone == null)
+        {
+            Debug.Log("tem algo errado");
+        }*/
         rb = GetComponent<Rigidbody>(); // obtém a referência ao Rigidbody da nave
         rb.mass = 1f; // define a massa do Rigidbody
         rb.drag = 0.5f; // define o coeficiente de arrasto do Rigidbody
@@ -92,17 +105,22 @@ public class Nave : MonoBehaviour
             //depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
             meshRenderer.material = materialOriginal;
 
-            if (vida <= 0)
-            {
-                /* ESSE CÓDIGO AQUI É A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
-                  int auxPontos = int.Parse(valorPontos.text)
-                      auxPontos = auxPontos + 200;
-                  valorPontos.text = auxPontos.ToString();
-                */
+            
+        }
 
-                //destruirá esse gameObject quando a vida dele chegar em 0
-                DestroyImmediate(this.gameObject, true);
-            }
+        if (vida <= 0)
+        {
+            /* ESSE CÓDIGO AQUI É A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
+              int auxPontos = int.Parse(valorPontos.text)
+                  auxPontos = auxPontos + 200;
+              valorPontos.text = auxPontos.ToString();
+            */
+
+            //destruirá esse gameObject quando a vida dele chegar em 0
+
+            //Destroy(playerClone.gameObject);
+
+            //Destroy(this.gameObject);        
         }
     }
 
