@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8707521806437175346, guid: f1cfefbb841a41f42965f027efd16c08, type: 3}
+      propertyPath: intervaloTiro
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707521806437175346, guid: f1cfefbb841a41f42965f027efd16c08, type: 3}
+      propertyPath: intervaloTiroEspecial
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8707521806437175352, guid: f1cfefbb841a41f42965f027efd16c08, type: 3}
       propertyPath: m_Name
       value: Player
