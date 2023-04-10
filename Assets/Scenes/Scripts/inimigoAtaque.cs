@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class inimigoAtaque : MonoBehaviour
 {
-    [Header("Configurações básicas do inimigo")]
+    [Header("Configuraï¿½ï¿½es bï¿½sicas do inimigo")]
     public int vida = 3;
 
-    [Header("Configuração de textura")]
+    [Header("Configuraï¿½ï¿½o de textura")]
     //material da nave quando ele tomar dano
     public Material materialDano;
     //material original da nave
     public Material materialOriginal;
     //isso aqui que aplica o material no inimigo 
     MeshRenderer meshRenderer;
-    //quanto tempo a textura de dano ficará na tela
+    //quanto tempo a textura de dano ficarï¿½ na tela
     public float tempoTexturaDano;
 
-    [Header("Configurações do disparo do inimigo")]
+    [Header("Configuraï¿½ï¿½es do disparo do inimigo")]
     public GameObject prefabTiroInimigo;
     public GameObject spawnPointDoTiroInimigo;
     public bool ativarTiro;
@@ -34,7 +34,7 @@ public class inimigoAtaque : MonoBehaviour
 
         if (ativarTiro)
         {
-            //o tempo que levará para ativar o código e de quando em quanto tempo ele vai se repetir
+            //o tempo que levarï¿½ para ativar o cï¿½digo e de quando em quanto tempo ele vai se repetir
             InvokeRepeating("Atirar", 2, 0.5f);
         }
 
@@ -51,18 +51,18 @@ public class inimigoAtaque : MonoBehaviour
             meshRenderer.material = materialDano;
             //vai executar algo depois que o TempoTexturaDanoPassar
             yield return new WaitForSeconds(tempoTexturaDano);
-            //depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
+            //depois desse tempo aï¿½ de cima passar o material do inimigo vai voltar pro base   
             meshRenderer.material = materialOriginal;
 
             if(vida <= 0)
             {
-                /* ESSE CÓDIGO AQUI É A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
+                /* ESSE Cï¿½DIGO AQUI ï¿½ A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
                   int auxPontos = int.Parse(valorPontos.text)
                       auxPontos = auxPontos + 200;
                   valorPontos.text = auxPontos.ToString();
                 */
 
-                //destruirá esse gameObject quando a vida dele chegar em 0
+                //destruirï¿½ esse gameObject quando a vida dele chegar em 0
                 Destroy(this.gameObject);
             
             }
@@ -77,14 +77,13 @@ public class inimigoAtaque : MonoBehaviour
             meshRenderer.material = materialDano;
             //vai executar algo depois que o TempoTexturaDanoPassar
             yield return new WaitForSeconds(tempoTexturaDano);
-            //depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
+            //depois desse tempo aï¿½ de cima passar o material do inimigo vai voltar pro base   
             meshRenderer.material = materialOriginal;
 
             if (vida <= 0)
             {
                 
                 Destroy(this.gameObject);
-                Instantiate(itemVida);
 
             }
 
@@ -97,5 +96,11 @@ public class inimigoAtaque : MonoBehaviour
         Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
         Destroy(prefabTiroInimigo, 5);
     }
+    public GameObject healthItem; //referencia ao objeto de cura que serÃ¡ deixado cair
+
+    void OnDestroy() {
+    Instantiate(healthItem, transform.position, transform.rotation); //cria uma cÃ³pia do objeto de cura na posiÃ§Ã£o atual do inimigo que foi destruÃ­do
+}
+
 }
 

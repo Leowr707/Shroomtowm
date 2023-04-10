@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -128,12 +128,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8707521806437175346, guid: f1cfefbb841a41f42965f027efd16c08, type: 3}
       propertyPath: intervaloTiro
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8707521806437175346, guid: f1cfefbb841a41f42965f027efd16c08, type: 3}
       propertyPath: intervaloTiroEspecial
@@ -188,7 +187,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f1cfefbb841a41f42965f027efd16c08, type: 3}
 --- !u!4 &16447980 stripped
 Transform:
@@ -540,8 +538,8 @@ GameObject:
   - component: {fileID: 352477715}
   - component: {fileID: 352477714}
   - component: {fileID: 352477713}
-  - component: {fileID: 352477717}
   - component: {fileID: 352477718}
+  - component: {fileID: 352477719}
   m_Layer: 0
   m_Name: Inimigo
   m_TagString: Untagged
@@ -621,28 +619,14 @@ Transform:
   m_GameObject: {fileID: 352477712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.44, y: 5.616, z: -0.05}
-  m_LocalScale: {x: 0.95879143, y: 1.2736238, z: 2.1575265}
+  m_LocalScale: {x: 0.95879143, y: 2.778665, z: 1.2155288}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 360529079}
+  - {fileID: 2039986817}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &352477717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352477712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82af9a9498bcf3b4b8fa3455a4320406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  collisionDistance: 1
-  collisionSpeed: 10
 --- !u!114 &352477718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +647,21 @@ MonoBehaviour:
   spawnPointDoTiroInimigo: {fileID: 360529078}
   ativarTiro: 1
   itemVida: {fileID: 6306618439253418564, guid: 6e7b6391472fc0d489b95367344e6efd, type: 3}
+  healthItem: {fileID: 6306618439253418564, guid: 6e7b6391472fc0d489b95367344e6efd, type: 3}
+--- !u!114 &352477719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352477712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ee65fe40b8c38468d0a1f9f7bd4ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 16447980}
+  moveSpeed: 5
 --- !u!1 &360529078
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +691,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 352477716}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -998,3 +997,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firula: 0
+--- !u!1 &2039986816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039986817}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2039986817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039986816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 352477716}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
