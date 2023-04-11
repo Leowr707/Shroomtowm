@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class ItemDeCura : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+   [SerializeField] 
+    private int vidas;
+
+    public int VidaS {
+        get{
+            return this.vidas;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Player"))
     {
-        
+        // Executar ação de coleta (exemplo: aumentar pontuação do jogador)
+
+        // Destruir objeto coletado
+        Destroy(gameObject);
     }
 }
+}    

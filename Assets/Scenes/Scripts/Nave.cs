@@ -1,63 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Nave : MonoBehaviour
 {
-    [Header("Configurações básicas do player")]
+    [Header("Configuraï¿½ï¿½es bï¿½sicas do player")]
     public float moveSpeed = 5f; // velocidade de movimento da nave
-    public float rotateSpeed = 100f; // velocidade de rotação da nave
-    public float maxSpeed = 20f; // velocidade máxima da nave
-    public float impulseForce = 10f; // força de impulso aplicada à nave
+    public float rotateSpeed = 100f; // velocidade de rotaï¿½ï¿½o da nave
+    public float maxSpeed = 20f; // velocidade mï¿½xima da nave
+    public float impulseForce = 10f; // forï¿½a de impulso aplicada ï¿½ nave
     public int vida = 3;
 
-    [Header("Configuração de textura")]
+    public Text vidaText;
+
+    [Header("Configuraï¿½ï¿½o de textura")]
     //material da nave quando ele tomar dano
     public Material materialDano;
     //material original da nave
     public Material materialOriginal;
     //isso aqui que aplica o material no inimigo 
     MeshRenderer meshRenderer;
-    //quanto tempo a textura de dano ficará na tela
+    //quanto tempo a textura de dano ficarï¿½ na tela
     public float tempoTexturaDano;
 
-    [Header("Configurações de tipo e spawn")]
+    [Header("Configuraï¿½ï¿½es de tipo e spawn")]
     public GameObject projetil; //onde coloca o projetil
     public Transform spawnPoint; //onde o tiro vai spawnar
     public GameObject tiroEspecial;
 
-    [Header("Configurações do tiro normal")]
+    [Header("Configuraï¿½ï¿½es do tiro normal")]
     public float intervaloTiro = 1;
     float tiroInicial, proximoTiro;
     public int tempoDestruicaoTiro = 5;
 
-    [Header("Configurações do tiro Especial")]
+    [Header("Configuraï¿½ï¿½es do tiro Especial")]
     public float intervaloTiroEspecial = 1;
     float tiroInicialEspecial, proximoTiroEspecial;
     public int tempoDestruicaoTiroEspecial = 5;
 
-    private Rigidbody rb; // referência ao Rigidbody da nave
+    private Rigidbody rb; // referï¿½ncia ao Rigidbody da nave
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>(); // obtém a referência ao Rigidbody da nave
+        rb = GetComponent<Rigidbody>(); // obtï¿½m a referï¿½ncia ao Rigidbody da nave
         rb.mass = 1f; // define a massa do Rigidbody
         rb.drag = 0.5f; // define o coeficiente de arrasto do Rigidbody
-        meshRenderer = GetComponent<MeshRenderer>(); // obtém a referência ao MeshRenderer da nave
+        meshRenderer = GetComponent<MeshRenderer>(); // obtï¿½m a referï¿½ncia ao MeshRenderer da nave
+        vidaText = GameObject.Find("Vida").GetComponent<Text>();
     }
 
     private void FixedUpdate()
     {
+        vidaText.text = "Vida: " + vida.ToString();
         Atirar();
         AtirarEspecial();
 
-        float horizontal = Input.GetAxis("Horizontal"); // recebe a entrada dos botões A e D
-        float vertical = Input.GetAxis("Vertical"); // recebe a entrada do botão W
+        float horizontal = Input.GetAxis("Horizontal"); // recebe a entrada dos botï¿½es A e D
+        float vertical = Input.GetAxis("Vertical"); // recebe a entrada do botï¿½o W
 
         // gira a nave em torno do eixo Z baseado na entrada horizontal
         transform.Rotate(0f, 0f, -horizontal * rotateSpeed * Time.deltaTime);
 
-        // verifica se a tecla W está sendo pressionada continuamente
+        // verifica se a tecla W estï¿½ sendo pressionada continuamente
         if (Input.GetKey(KeyCode.W))
         {
             rb.useGravity = false; // desativa a gravidade
@@ -67,7 +72,7 @@ public class Nave : MonoBehaviour
             rb.useGravity = true; // ativa a gravidade
         }
 
-        // aplica força para mover a nave para cima baseado na entrada vertical
+        // aplica forï¿½a para mover a nave para cima baseado na entrada vertical
         Vector3 upForce = transform.up * vertical * impulseForce;
         rb.AddForce(upForce);
 
@@ -89,7 +94,7 @@ public class Nave : MonoBehaviour
              meshRenderer.material = materialDano;
              //vai executar algo depois que o TempoTexturaDanoPassar
              yield return new WaitForSeconds(tempoTexturaDano);
-             //depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
+             //depois desse tempo aï¿½ de cima passar o material do inimigo vai voltar pro base   
              meshRenderer.material = materialOriginal;
 
 
@@ -97,13 +102,13 @@ public class Nave : MonoBehaviour
 
          if (vida <= 0)
          {
-             /* ESSE CÓDIGO AQUI É A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
+             /* ESSE Cï¿½DIGO AQUI ï¿½ A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
                int auxPontos = int.Parse(valorPontos.text)
                    auxPontos = auxPontos + 200;
                valorPontos.text = auxPontos.ToString();
              */
 
-    //destruirá esse gameObject quando a vida dele chegar em 0
+    //destruirï¿½ esse gameObject quando a vida dele chegar em 0
 
     //Destroy(playerClone.gameObject);
 
@@ -122,24 +127,29 @@ public class Nave : MonoBehaviour
 
             if (vida <= 0)
             {
-                // Destrói esse gameObject quando a vida dele chegar em 0
+                // Destrï¿½i esse gameObject quando a vida dele chegar em 0
                 Destroy(this.gameObject);
                
+            } else if (GetComponent<Collider>().CompareTag("itemDeCura")) {
+                ItemDeCura itemDeCura = GetComponent<Collider>().GetComponent<ItemDeCura>();
+                vida += itemDeCura.VidaS;
+                
+
             }
         }
     }
     private IEnumerator ResetMaterial()
     {
-        // Vai executar depois que o tempo de duração do dano passar
+        // Vai executar depois que o tempo de duraï¿½ï¿½o do dano passar
         yield return new WaitForSeconds(tempoTexturaDano);
-        // Depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
+        // Depois desse tempo aï¿½ de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
     }
 
 
     void Atirar()
     {
-        // Verifica se o jogador apertou a tecla de espaço
+        // Verifica se o jogador apertou a tecla de espaï¿½o
         // Se apertou, vai criar o tiro
         tiroInicial = tiroInicial + Time.deltaTime;
 
@@ -149,9 +159,9 @@ public class Nave : MonoBehaviour
 
             proximoTiro = tiroInicial + intervaloTiro;
 
-            // Vai criar na tela um projetil, em uma determinada posição, com uma rotação
+            // Vai criar na tela um projetil, em uma determinada posiï¿½ï¿½o, com uma rotaï¿½ï¿½o
             // spawnPoint.position -> Representa o ponto onde o projetil vai ser criado
-            // spawnPoint.rotation -> Rotação que o projetil criado vai possuir
+            // spawnPoint.rotation -> Rotaï¿½ï¿½o que o projetil criado vai possuir
             GameObject tiro = Instantiate(projetil, spawnPoint.position, spawnPoint.transform.rotation);
             //obj.GetComponent<bullet>();
 
@@ -163,7 +173,7 @@ public class Nave : MonoBehaviour
 
     void AtirarEspecial()
     {
-        // Verifica se o jogador apertou a tecla de espaço
+        // Verifica se o jogador apertou a tecla de espaï¿½o
         // Se apertou, vai criar o tiro
         tiroInicialEspecial = tiroInicialEspecial + Time.deltaTime;
 
@@ -172,14 +182,17 @@ public class Nave : MonoBehaviour
 
             proximoTiroEspecial = tiroInicialEspecial + intervaloTiroEspecial;
 
-            // Vai criar na tela um projetil, em uma determinada posição, com uma rotação
+            // Vai criar na tela um projetil, em uma determinada posiï¿½ï¿½o, com uma rotaï¿½ï¿½o
             // spawnPoint.position -> Representa o ponto onde o projetil vai ser criado
-            // spawnPoint.rotation -> Rotação que o projetil criado vai possuir
+            // spawnPoint.rotation -> Rotaï¿½ï¿½o que o projetil criado vai possuir
             GameObject TiroEspecial = Instantiate(tiroEspecial, spawnPoint.position, spawnPoint.transform.rotation);
 
             proximoTiroEspecial = proximoTiroEspecial - tiroInicialEspecial;
             tiroInicialEspecial = 0.0f;
             Destroy(TiroEspecial, tempoDestruicaoTiroEspecial);
         }
+    }
+    private void update() {
+        vidaText.text = "Vida: " + vida.ToString();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InimigoAtaque : MonoBehaviour
 {
-    [Header("Configurações do disparo do inimigo")]
+    [Header("Configuraï¿½ï¿½es do disparo do inimigo")]
     public float cdTiroInimigo;
     public GameObject prefabTiroInimigo;
     public GameObject spawnPointDoTiroInimigo;
@@ -15,7 +15,7 @@ public class InimigoAtaque : MonoBehaviour
     {
         if (ativarTiro)
         {
-            //o tempo que levará para ativar o código e de quando em quanto tempo ele vai se repetir
+            //o tempo que levarï¿½ para ativar o cï¿½digo e de quando em quanto tempo ele vai se repetir
             InvokeRepeating("Atirar", 2, cdTiroInimigo);
         }
     }

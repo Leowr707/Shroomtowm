@@ -24,6 +24,13 @@ public class Inimigo : MonoBehaviour
     [Header("Drop do inimigo")]
     public GameObject itemVida;
 
+    [SerializeField]
+    [Range(0, 100)]
+    private float chanceItemVida;
+
+    [SerializeField]
+    private ItemDeCura itemvidaprefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,8 +71,10 @@ public class Inimigo : MonoBehaviour
             if (vida <= 0)
             {
                 // Destrói esse gameObject quando a vida dele chegar em 0
+                ScoreManager.Pontos++;
+                SoltarItemVida();
                 Destroy(this.gameObject);
-                Instantiate(itemVida);
+                
             }
         }
         else if (other.transform.tag == "tiroEspecialPlayer")
@@ -81,8 +90,10 @@ public class Inimigo : MonoBehaviour
             if (vida <= 0)
             {
                 // Destrói esse gameObject quando a vida dele chegar em 0
+                ScoreManager.Pontos++;
+                SoltarItemVida();
                 Destroy(this.gameObject);
-                Instantiate(itemVida);
+                
             }
         }
     }
@@ -94,4 +105,19 @@ public class Inimigo : MonoBehaviour
         // Depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
     }
+
+    /*public void Destruir(){
+        ScoreManager.Pontos++;
+        Destroy(this.gameobject);
+    }*/
+
+    private void SoltarItemVida() {
+        float chanceAleatoria = Random.Range(0f, 100f);
+        if(chanceAleatoria <= this.chanceItemVida) {
+            //soltar o Item Vida
+            Instantiate(this.itemvidaprefab, this.transform.position, Quaternion.identity);
+        }
+
+    }
+
 }
