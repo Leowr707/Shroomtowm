@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - tiroInimigo
+  - tiroPlayer
+  - tiroEspecialPlayer
+  - itemDeCura
   layers:
   - Default
   - TransparentFX
