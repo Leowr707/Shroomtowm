@@ -4,24 +4,42 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    public Transform Player; // referência para o objeto do jogador
-    public float moveSpeed = 5f; // velocidade de movimento do inimigo
+    public float moveSpeed = 5f;
+    public float collisionDistance = 1f;
+    public float collisionSpeed = 10f;
 
-    void Update()
+    private Transform playerTransform;
+
+    private void Start()
     {
-        // Verifica se o objeto do jogador foi definido
-        if (Player == null) return;
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            playerTransform = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("Player nao encontrado!");
+        }
+    }
 
-        // Cálculo da direção para o jogador
-        Vector3 direction = Player.position - transform.position;
-        direction.Normalize();
+    private void Update()
+    {
+        if (playerTransform == null)
+        {
+            return;
+        }
 
-        // Cálculo do ângulo de rotação em relação ao jogador
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Movimentacao suave nos eixos X e Y
+        Vector2 movement = Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
+        transform.position = new Vector3(movement.x, movement.y, 0f);
 
-        // Aplica a rotação e movimento
-        transform.rotation = rotation;
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        // Colisor com o jogador
+        if (Vector3.Distance(transform.position, playerTransform.position) < collisionDistance)
+        {
+            Vector3 collisionDirection = playerTransform.position - transform.position;
+            collisionDirection.Normalize();
+            transform.position -= collisionDirection * collisionSpeed * Time.deltaTime;
+        }
     }
 }
