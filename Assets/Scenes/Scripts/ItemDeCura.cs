@@ -3,24 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemDeCura : MonoBehaviour
-{
-   [SerializeField] 
-    private int vidas;
 
-    public int VidaS {
-        get{
-            return this.vidas;
-        }
-    }
+
+{
+    public int valorDeCura = 1;
 
     private void OnTriggerEnter(Collider other)
-{
-    if (other.CompareTag("Player"))
     {
-        // Executar ação de coleta (exemplo: aumentar pontuação do jogador)
-
-        // Destruir objeto coletado
-        Destroy(gameObject);
+        Nave nave = other.GetComponent<Nave>();
+        if (nave != null)
+        {
+            nave.RecuperarVida(valorDeCura);
+            Destroy(gameObject);
+        }
     }
 }
-}    

@@ -11,6 +11,12 @@ public class Nave : MonoBehaviour
     public float maxSpeed = 20f; // velocidade m�xima da nave
     public float impulseForce = 10f; // for�a de impulso aplicada � nave
     public int vida = 3;
+    // método para recuperar vida
+    public void RecuperarVida(int valorRecuperado)
+    {
+        vida += valorRecuperado;
+        Debug.Log("Vida recuperada! Vida atual: " + vida);
+    }
 
     public Text vidaText;
 
@@ -130,12 +136,12 @@ public class Nave : MonoBehaviour
                 // Destr�i esse gameObject quando a vida dele chegar em 0
                 Destroy(this.gameObject);
                
-            } else if (GetComponent<Collider>().CompareTag("itemDeCura")) {
+            } /* else if (GetComponent<Collider>().CompareTag("itemDeCura")) {
                 ItemDeCura itemDeCura = GetComponent<Collider>().GetComponent<ItemDeCura>();
                 vida += itemDeCura.VidaS;
                 
 
-            }
+            }*/
         }
     }
     private IEnumerator ResetMaterial()
@@ -195,4 +201,9 @@ public class Nave : MonoBehaviour
     private void update() {
         vidaText.text = "Vida: " + vida.ToString();
     }
+    
+    public void CuraVida(int cura) {
+    vida += cura;
+    
+}
 }

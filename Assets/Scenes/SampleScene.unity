@@ -1220,7 +1220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455324329525409001, guid: c72ccbc51be4bb346b0402ecc5dd0973, type: 3}
       propertyPath: chanceItemVida
-      value: 40.7
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 1455324329525409001, guid: c72ccbc51be4bb346b0402ecc5dd0973, type: 3}
       propertyPath: itemvidaprefab
