@@ -10,7 +10,7 @@ public class Tiro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //em 5 segundos após ser gerado, o tiro será destruído
+        //em 5 segundos apï¿½s ser gerado, o tiro serï¿½ destruï¿½do
         //gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * forca);
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * forca * Time.deltaTime;
 

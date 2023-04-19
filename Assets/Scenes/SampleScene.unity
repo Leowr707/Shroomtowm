@@ -655,6 +655,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoPontos: {fileID: 620295815}
+--- !u!1 &580636130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580636131}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &580636131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580636130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.099293, y: -14.818539, z: -3.584465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &620295813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,11 +1263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455324329525409005, guid: c72ccbc51be4bb346b0402ecc5dd0973, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5554
+      value: 450.8
       objectReference: {fileID: 0}
     - target: {fileID: 1455324329525409005, guid: c72ccbc51be4bb346b0402ecc5dd0973, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: -6.6
       objectReference: {fileID: 0}
     - target: {fileID: 1455324329525409005, guid: c72ccbc51be4bb346b0402ecc5dd0973, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1270,6 +1301,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1455324329525409010, guid: c72ccbc51be4bb346b0402ecc5dd0973, type: 3}
+      propertyPath: alvo
+      value: 
+      objectReference: {fileID: 1672882790}
     - target: {fileID: 1455324329525409010, guid: c72ccbc51be4bb346b0402ecc5dd0973, type: 3}
       propertyPath: ativarTiro
       value: 1

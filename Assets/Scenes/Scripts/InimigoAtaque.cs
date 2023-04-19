@@ -23,7 +23,7 @@ public class InimigoAtaque : MonoBehaviour
     
     void Atirar()
     {
-        Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
-        Destroy(prefabTiroInimigo, 5);  
+        GameObject tiro = Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
+        Destroy(tiro, 5);  
     }
 }

@@ -14,3 +14,4 @@ public class InGame : MonoBehaviour
         this.textoPontos.text = ScoreManager.Pontos.ToString();
     }
 }
+    

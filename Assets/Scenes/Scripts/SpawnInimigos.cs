@@ -24,8 +24,15 @@ public class SpawnInimigos : MonoBehaviour
 
     private void SpawnInimigo()
     {
-        if (gameObject == null) return;
-        Vector3 posicaoSpawn = new Vector3(Random.Range(-limiteX, limiteX), Random.Range(-limiteY, limiteY), 0);
-        Instantiate(inimigoPrefab, posicaoSpawn, Quaternion.identity);
+    Vector3 posicaoSpawn = new Vector3(Random.Range(-limiteX, limiteX), Random.Range(-limiteY, limiteY), 0);
+    if (inimigoPrefab != null)
+    {
+        GameObject novoInimigo = Instantiate(inimigoPrefab, posicaoSpawn, Quaternion.identity);
+        // faça algo com o novo inimigo, se necessário
     }
+    else
+    {
+        Debug.LogWarning("O objeto inimigoPrefab é nulo. Certifique-se de que o objeto está presente na cena.");
+    }
+}
 }
