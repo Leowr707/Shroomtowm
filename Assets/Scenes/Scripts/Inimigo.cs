@@ -8,6 +8,8 @@ public class Inimigo : MonoBehaviour
     public Transform Player; // referência para o objeto do jogador
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
 
+    public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
+
     [Header("Configurações básicas do inimigo")]
     public int vida = 3;
 
@@ -71,9 +73,10 @@ public class Inimigo : MonoBehaviour
             if (vida <= 0)
             {
                 // Destrói esse gameObject quando a vida dele chegar em 0
-                ScoreManager.Pontos++;
                 SoltarItemVida();
                 Destroy(this.gameObject);
+                GameManager.instancia.adicionarPontos(recompensaPontos);
+                
                 
             }
         }
@@ -90,7 +93,6 @@ public class Inimigo : MonoBehaviour
             if (vida <= 0)
             {
                 // Destrói esse gameObject quando a vida dele chegar em 0
-                ScoreManager.Pontos++;
                 SoltarItemVida();
                 Destroy(this.gameObject);
                 
@@ -105,11 +107,6 @@ public class Inimigo : MonoBehaviour
         // Depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
     }
-
-    /*public void Destruir(){
-        ScoreManager.Pontos++;
-        Destroy(this.gameobject);
-    }*/
 
     private void SoltarItemVida() {
         float chanceAleatoria = Random.Range(0f, 100f);

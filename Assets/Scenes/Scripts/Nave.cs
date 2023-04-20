@@ -10,15 +10,12 @@ public class Nave : MonoBehaviour
     public float rotateSpeed = 100f; // velocidade de rota��o da nave
     public float maxSpeed = 20f; // velocidade m�xima da nave
     public float impulseForce = 10f; // for�a de impulso aplicada � nave
-    public int vida = 3;
     // método para recuperar vida
     public void RecuperarVida(int valorRecuperado)
     {
-        vida += valorRecuperado;
-        Debug.Log("Vida recuperada! Vida atual: " + vida);
+        GameManager.instancia.vidaAtual += valorRecuperado;
+        Debug.Log("Vida recuperada! Vida atual: " + GameManager.instancia.vidaAtual);
     }
-
-    public Text vidaText;
 
     [Header("Configura��o de textura")]
     //material da nave quando ele tomar dano
@@ -53,12 +50,11 @@ public class Nave : MonoBehaviour
         rb.mass = 1f; // define a massa do Rigidbody
         rb.drag = 0.5f; // define o coeficiente de arrasto do Rigidbody
         meshRenderer = GetComponent<MeshRenderer>(); // obt�m a refer�ncia ao MeshRenderer da nave
-        vidaText = GameObject.Find("Vida").GetComponent<Text>();
+
     }
 
     private void FixedUpdate()
     {
-        vidaText.text = "Vida: " + vida.ToString();
         Atirar();
         AtirarEspecial();
 
@@ -88,60 +84,20 @@ public class Nave : MonoBehaviour
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
     }
-    /* private IEnumerator OnCollisionEnter(Collision objetoColidido)
 
-     {
-         if (objetoColidido.transform.tag == "tiroInimigo")
-         {
-             Destroy(objetoColidido.gameObject);
-
-             vida = vida - 1;
-             //muda a textura do inimigo pro material de dano quando tomar dano
-             meshRenderer.material = materialDano;
-             //vai executar algo depois que o TempoTexturaDanoPassar
-             yield return new WaitForSeconds(tempoTexturaDano);
-             //depois desse tempo a� de cima passar o material do inimigo vai voltar pro base   
-             meshRenderer.material = materialOriginal;
-
-
-         }
-
-         if (vida <= 0)
-         {
-             /* ESSE C�DIGO AQUI � A BASE PRO SISTEMA DE SCORE DESSE INIMIGO :)
-               int auxPontos = int.Parse(valorPontos.text)
-                   auxPontos = auxPontos + 200;
-               valorPontos.text = auxPontos.ToString();
-             */
-
-    //destruir� esse gameObject quando a vida dele chegar em 0
-
-    //Destroy(playerClone.gameObject);
-
-    //Destroy(this.gameObject);        
+       
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "tiroInimigo")
         {
+            other.gameObject.SetActive(false);
             Destroy(other.gameObject);
-            vida = vida - 1;
+            GameManager.instancia.RemoverVida(1);
 
             // Muda a textura do inimigo para o material de dano quando tomar dano
             meshRenderer.material = materialDano;
             // Vai executar algo depois que o TempoTexturaDanoPassar
             StartCoroutine(ResetMaterial());
-
-            if (vida <= 0)
-            {
-                // Destr�i esse gameObject quando a vida dele chegar em 0
-                Destroy(this.gameObject);
-               
-            } /* else if (GetComponent<Collider>().CompareTag("itemDeCura")) {
-                ItemDeCura itemDeCura = GetComponent<Collider>().GetComponent<ItemDeCura>();
-                vida += itemDeCura.VidaS;
-                
-
-            }*/
         }
     }
     private IEnumerator ResetMaterial()
@@ -198,12 +154,6 @@ public class Nave : MonoBehaviour
             Destroy(TiroEspecial, tempoDestruicaoTiroEspecial);
         }
     }
-    private void update() {
-        vidaText.text = "Vida: " + vida.ToString();
-    }
     
-    public void CuraVida(int cura) {
-    vida += cura;
     
-}
 }
