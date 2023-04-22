@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Inimigo : MonoBehaviour
+public class InimigoConfusao : MonoBehaviour
 {
 
-    public Transform Player; // referÃªncia para o objeto do jogador
+    public Transform Player; // referência para o objeto do jogador
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
 
     public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
@@ -14,17 +14,17 @@ public class Inimigo : MonoBehaviour
 
     [SerializeField] private AudioSource SomMorte;
 
-    [Header("ConfiguraÃ§Ãµes bÃ¡sicas do inimigo")]
+    [Header("Configurações básicas do inimigo")]
     public int vida = 3;
 
-    [Header("ConfiguraÃ§Ã£o de textura")]
+    [Header("Configuração de textura")]
     //material da nave quando ele tomar dano
     public Material materialDano;
     //material original da nave
     public Material materialOriginal;
     //isso aqui que aplica o material no inimigo 
     MeshRenderer meshRenderer;
-    //quanto tempo a textura de dano ficarÃ¡ na tela
+    //quanto tempo a textura de dano ficará na tela
     public float tempoTexturaDano;
 
     [Header("Drop do inimigo")]
@@ -50,15 +50,15 @@ public class Inimigo : MonoBehaviour
         // Verifica se o objeto do jogador foi definido
         if (Player == null) return;
 
-        // CÃ¡lculo da direÃ§Ã£o para o jogador
+        // Cálculo da direção para o jogador
         Vector3 direction = Player.position - transform.position;
         direction.Normalize();
 
-        // CÃ¡lculo do Ã¢ngulo de rotaÃ§Ã£o em relaÃ§Ã£o ao jogador
+        // Cálculo do ângulo de rotação em relação ao jogador
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        // Aplica a rotaÃ§Ã£o e movimento
+        // Aplica a rotação e movimento
         transform.rotation = rotation;
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
@@ -77,13 +77,13 @@ public class Inimigo : MonoBehaviour
 
             if (vida <= 0)
             {
-                // DestrÃ³i esse gameObject quando a vida dele chegar em 0
+                // Destrói esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
                 Destroy(this.gameObject);
                 SomMorte.Play();
                 GameManager.instancia.adicionarPontos(recompensaPontos);
-                
-                
+
+
             }
 
             if (other.transform.tag == "Player")
@@ -104,26 +104,28 @@ public class Inimigo : MonoBehaviour
 
             if (vida <= 0)
             {
-                // DestrÃ³i esse gameObject quando a vida dele chegar em 0
+                // Destrói esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
                 SomMorte.Play();
                 Destroy(this.gameObject);
-                
+
             }
         }
     }
 
     private IEnumerator ResetMaterial()
     {
-        // Vai executar depois que o tempo de duraÃ§Ã£o do dano passar
+        // Vai executar depois que o tempo de duração do dano passar
         yield return new WaitForSeconds(tempoTexturaDano);
-        // Depois desse tempo aÃ­ de cima passar o material do inimigo vai voltar pro base   
+        // Depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
     }
 
-    private void SoltarItemVida() {
+    private void SoltarItemVida()
+    {
         float chanceAleatoria = Random.Range(0f, 100f);
-        if(chanceAleatoria <= this.chanceItemVida) {
+        if (chanceAleatoria <= this.chanceItemVida)
+        {
             //soltar o Item Vida
             Instantiate(this.itemvidaprefab, this.transform.position, Quaternion.identity);
         }
