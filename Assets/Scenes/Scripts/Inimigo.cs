@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Inimigo : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Inimigo : MonoBehaviour
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
 
     public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
+    public AudioSource somMorte; // Som que sera executado
+
+    [SerializeField] private AudioSource SomMorte;
 
     [Header("Configurações básicas do inimigo")]
     public int vida = 3;
@@ -36,6 +40,7 @@ public class Inimigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SomMorte = GameObject.Find("MorteInimigo").GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         materialOriginal = meshRenderer.material;
     }
@@ -75,6 +80,7 @@ public class Inimigo : MonoBehaviour
                 // Destrói esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
                 Destroy(this.gameObject);
+                SomMorte.Play();
                 GameManager.instancia.adicionarPontos(recompensaPontos);
                 
                 
@@ -94,6 +100,7 @@ public class Inimigo : MonoBehaviour
             {
                 // Destrói esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
+                SomMorte.Play();
                 Destroy(this.gameObject);
                 
             }

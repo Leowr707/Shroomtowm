@@ -8,6 +8,6 @@ public class MenuManager : MonoBehaviour
 {
      public void CarregarCena(string nomeDaCena) {
         //Vai carregar a cena
-        SceneManager.LoadScene(nomeDaCena);
+        SceneManager.LoadScene("Level1");
     }
 }

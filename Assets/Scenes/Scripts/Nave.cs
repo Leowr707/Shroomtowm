@@ -115,7 +115,7 @@ public class Nave : MonoBehaviour
         // Se apertou, vai criar o tiro
         tiroInicial = tiroInicial + Time.deltaTime;
 
-        if (Input.GetButton("Jump") && tiroInicial > proximoTiro)
+        if (Input.GetKey(KeyCode.J) && tiroInicial > proximoTiro)
         {
            
 
@@ -139,7 +139,7 @@ public class Nave : MonoBehaviour
         // Se apertou, vai criar o tiro
         tiroInicialEspecial = tiroInicialEspecial + Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && tiroInicialEspecial > proximoTiroEspecial)
+        if (Input.GetKey(KeyCode.K) && tiroInicialEspecial > proximoTiroEspecial)
         {
 
             proximoTiroEspecial = tiroInicialEspecial + intervaloTiroEspecial;
