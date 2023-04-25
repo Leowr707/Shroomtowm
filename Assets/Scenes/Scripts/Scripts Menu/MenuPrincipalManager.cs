@@ -12,6 +12,7 @@ public class MenuPrincipalManager : MonoBehaviour
     public void jogar()
     {
         SceneManager.LoadScene("Level1");
+        Time.timeScale = 1f;
     }
 
     public void AbrirOpcoes()
