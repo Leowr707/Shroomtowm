@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
         {
         //Vai carregar a cena
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
         }
         public void CarregarMenu(string nomeDaCena)
         {
