@@ -11,6 +11,8 @@ public class InimigoAtaqueConfusao : MonoBehaviour
     public bool ativarTiro;
 
     private Transform playerTransform;
+    private Vector3 lastPosition;
+    private float moveSpeedThreshold = 0.1f;
 
     private void Start()
     {
@@ -22,11 +24,25 @@ public class InimigoAtaqueConfusao : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Vector3.Distance(transform.position, lastPosition) > moveSpeedThreshold)
+        {
+            // O inimigo está se movendo
+            lastPosition = transform.position;
+        }
+    }
+
     private void Atirar()
     {
-        if (playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= 50)
+        if (!IsMoving() && playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= 40)
         {
             GameObject tiro = Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
         }
+    }
+
+    private bool IsMoving()
+    {
+        return Vector3.Distance(transform.position, lastPosition) > moveSpeedThreshold;
     }
 }

@@ -50,17 +50,38 @@ public class InimigoConfusao : MonoBehaviour
         // Verifica se o objeto do jogador foi definido
         if (Player == null) return;
 
+        // Cálculo da distância entre o inimigo e o jogador
+        float distance = Vector3.Distance(transform.position, Player.position);
+
+        // Verifica se a distância é menor ou igual a 30
+        if (distance <= 30f)
+        {
+            // Define a direção para o jogador
+            Vector3 direction = Player.position - transform.position;
+            direction.Normalize();
+
+            // Cálculo do ângulo de rotação em relação ao jogador
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Aplica a rotação
+            transform.rotation = rotation;
+
+            // Desativa o movimento
+            return;
+        }
+
         // Cálculo da direção para o jogador
-        Vector3 direction = Player.position - transform.position;
-        direction.Normalize();
+        Vector3 moveDirection = Player.position - transform.position;
+        moveDirection.Normalize();
 
         // Cálculo do ângulo de rotação em relação ao jogador
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        float moveAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90f;
+        Quaternion moveRotation = Quaternion.AngleAxis(moveAngle, Vector3.forward);
 
         // Aplica a rotação e movimento
-        transform.rotation = rotation;
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        transform.rotation = moveRotation;
+        transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
