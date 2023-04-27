@@ -20,12 +20,16 @@ public class Nave : MonoBehaviour
     [Header("Configura��o de textura")]
     //material da nave quando ele tomar dano
     public Material materialDano;
+    //material da nave quando ele toma tiro do inimigo de confusao
+    public Material materialDanoConfusao;
     //material original da nave
     public Material materialOriginal;
     //isso aqui que aplica o material no inimigo 
     MeshRenderer meshRenderer;
     //quanto tempo a textura de dano ficar� na tela
     public float tempoTexturaDano;
+    //quanto tempo a textura de dano ficar� na tela
+    public float tempoTexturaConfusao;
 
     [Header("Configura��es de tipo e spawn")]
     public GameObject projetil; //onde coloca o projetil
@@ -99,11 +103,31 @@ public class Nave : MonoBehaviour
             // Vai executar algo depois que o TempoTexturaDanoPassar
             StartCoroutine(ResetMaterial());
         }
+
+        if (other.transform.tag == "tiroInimigoConfusao")
+        {
+            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+           
+
+            // Muda a textura do inimigo para o material de confusao quando tomar o tiro
+            meshRenderer.material = materialDanoConfusao;
+            // Vai executar algo depois que o TempoTexturaDanoPassar
+            StartCoroutine(ResetMaterialConfusao());
+        }
     }
     private IEnumerator ResetMaterial()
     {
         // Vai executar depois que o tempo de dura��o do dano passar
         yield return new WaitForSeconds(tempoTexturaDano);
+        // Depois desse tempo a� de cima passar o material do inimigo vai voltar pro base   
+        meshRenderer.material = materialOriginal;
+    }
+
+    private IEnumerator ResetMaterialConfusao()
+    {
+        // Vai executar depois que o tempo de dura��o do dano passar
+        yield return new WaitForSeconds(tempoTexturaConfusao);
         // Depois desse tempo a� de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
     }

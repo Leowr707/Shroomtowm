@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6008446172416383172}
   m_Layer: 0
   m_Name: tiroInimigoConfusao
-  m_TagString: tiroInimigo
+  m_TagString: tiroInimigoConfusao
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

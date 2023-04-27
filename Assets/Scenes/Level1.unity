@@ -4899,6 +4899,14 @@ PrefabInstance:
       propertyPath: intervaloTiro
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2269981010896177047, guid: dd9a37723bededa4a81e8582e88bc07d, type: 3}
+      propertyPath: materialDanoConfusao
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a6be6a1730d99548bb5fa82f77e6e16, type: 2}
+    - target: {fileID: 2269981010896177047, guid: dd9a37723bededa4a81e8582e88bc07d, type: 3}
+      propertyPath: tempoTexturaConfusao
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2269981010896177050, guid: dd9a37723bededa4a81e8582e88bc07d, type: 3}
       propertyPath: m_RootOrder
       value: 2

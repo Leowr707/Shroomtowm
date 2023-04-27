@@ -8,6 +8,7 @@ TagManager:
   - tiroPlayer
   - tiroEspecialPlayer
   - itemDeCura
+  - tiroInimigoConfusao
   layers:
   - Default
   - TransparentFX

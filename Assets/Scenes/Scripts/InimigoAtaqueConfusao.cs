@@ -35,7 +35,7 @@ public class InimigoAtaqueConfusao : MonoBehaviour
 
     private void Atirar()
     {
-        if (!IsMoving() && playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= 40)
+        if (!IsMoving() && playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= 30)
         {
             GameObject tiro = Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
         }
