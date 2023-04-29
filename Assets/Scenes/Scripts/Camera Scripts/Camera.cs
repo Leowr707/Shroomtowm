@@ -6,6 +6,7 @@ public class Camera : MonoBehaviour
 {
     public Transform target; // Transform do objeto que a c�mera deve seguir
     public float smoothSpeed = 100f; // Velocidade de movimento da c�mera
+    
 
     void LateUpdate()
     {

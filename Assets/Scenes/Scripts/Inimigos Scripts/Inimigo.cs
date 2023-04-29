@@ -40,9 +40,11 @@ public class Inimigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         SomMorte = GameObject.Find("MorteInimigo").GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         materialOriginal = meshRenderer.material;
+        
     }
 
     void Update()
@@ -83,13 +85,14 @@ public class Inimigo : MonoBehaviour
                 SomMorte.Play();
                 GameManager.instancia.adicionarPontos(recompensaPontos);
                 
-                
             }
+            if (other.CompareTag("Player"))
 
             if (other.transform.tag == "Player")
             {
                 GameManager.instancia.vidaAtual = 0;
             }
+            
 
         }
         else if (other.transform.tag == "tiroEspecialPlayer")

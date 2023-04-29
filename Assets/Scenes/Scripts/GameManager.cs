@@ -84,15 +84,4 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-
-
-    /* 
-    public void CuraVida(int cura) {
-    vida += cura;
-
-    private void update() {
-        vidaText.text = "Vida: " + vida.ToString();
-    }
-    */
 }
