@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float vidaMaxima;
 
     public static GameManager instancia;
+    AudioSource audioSource;
 
     public Transform gameOver;
 
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
     void Start() {
         //A vida inicial que o jogador vai comecar, sera a vida maxima permitida
         vidaAtual = vidaMaxima;
+        AudioManager.instancia.TocarSomBMG();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update() {

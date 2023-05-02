@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuPrincipalManager : MonoBehaviour
 {
+    [Header("Configura��es de Sons")]
+    public AudioClip bgmSound;
+    public AudioClip ClickSowunds;
+
     [SerializeField] private string nomeDoLevelDeJogo;
     [SerializeField] private GameObject painelMenuPrincipal;
     [SerializeField] private GameObject painelOpcoes;

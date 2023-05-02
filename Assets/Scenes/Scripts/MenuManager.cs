@@ -6,10 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public static MenuManager instanciaMenu;
-    public bool isPaused = false;
-        public GameObject PauseMenu;
-        public void CarregarCena(string nomeDaCena) 
+
+[Header("Configura��es de Sons")]
+public AudioClip bgmSound;
+public AudioClip ClickSowunds;
+
+
+ public static MenuManager instanciaMenu;
+ public bool isPaused = false;
+  public GameObject PauseMenu;
+  public void CarregarCena(string nomeDaCena)
         {
         //Vai carregar a cena
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

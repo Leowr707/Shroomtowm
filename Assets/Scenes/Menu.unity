@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1736,7 +1736,19 @@ MonoBehaviour:
   m_Value: 0.262
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1712544955}
+        m_TargetAssemblyTypeName: ControladorSom, Assembly-CSharp
+        m_MethodName: SomBotao
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!1 &691291907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,7 +2367,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1f109dbc58261a04ca917a27b0cb110e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.073
+  m_Volume: 0.262
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2934,12 +2946,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684426510}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 77b955fa1a2bd7147b29a11ca152ac60, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 71b35ad6071c45e42b2f566dcccfe730, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.508
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3068,6 +3080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8198db9709b3c142a56295ff4cc2799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmSound: {fileID: 8300000, guid: 71b35ad6071c45e42b2f566dcccfe730, type: 3}
+  ClickSowunds: {fileID: 8300000, guid: 7047dfb19264e0340838857563b15555, type: 3}
   nomeDoLevelDeJogo: Level1
   painelMenuPrincipal: {fileID: 1845141995}
   painelOpcoes: {fileID: 1522920004}

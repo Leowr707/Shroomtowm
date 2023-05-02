@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Inimigo : MonoBehaviour
 {
 
-    public Transform Player; // referência para o objeto do jogador
+    [SerializeField]public Transform Player; // referência para o objeto do jogador
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
 
     public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
     public AudioSource somMorte; // Som que sera executado
+    public WaveManager waveManager;// script que faz parte do WaveManager
+    public GameObject MorteFx;
 
     [SerializeField] private AudioSource SomMorte;
 
@@ -30,17 +34,14 @@ public class Inimigo : MonoBehaviour
     [Header("Drop do inimigo")]
     public GameObject itemVida;
 
-    [SerializeField]
-    [Range(0, 100)]
+    [SerializeField][Range(0, 100)]
     private float chanceItemVida;
-
-    [SerializeField]
-    private ItemDeCura itemvidaprefab;
+    [SerializeField]private ItemDeCura itemvidaprefab;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Player = GameObject.FindWithTag("Player").transform;
         SomMorte = GameObject.Find("MorteInimigo").GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         materialOriginal = meshRenderer.material;
@@ -82,9 +83,14 @@ public class Inimigo : MonoBehaviour
                 // Destrói esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
                 Destroy(this.gameObject);
-                SomMorte.Play();
                 GameManager.instancia.adicionarPontos(recompensaPontos);
+                AudioManager.instancia.TocarSomMorte();
+                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
                 
+                if (waveManager != null)
+                {
+                    waveManager.EnemyDefeated();
+                }
             }
             if (other.CompareTag("Player"))
 

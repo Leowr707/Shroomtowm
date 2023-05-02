@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class ItemDeCura : MonoBehaviour
 
@@ -14,6 +16,8 @@ public class ItemDeCura : MonoBehaviour
         if (nave != null)
         {
             nave.RecuperarVida(valorDeCura);
+            AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.VidaSFX, 0.5f);
+            AudioManager.instancia.TocarSomVida();          
             Destroy(gameObject);
         }
     }

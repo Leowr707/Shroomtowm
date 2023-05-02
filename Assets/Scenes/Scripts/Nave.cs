@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Nave : MonoBehaviour
 {
+    public static Nave instancia;
     [Header("Configura��es b�sicas do player")]
     public float moveSpeed = 5f; // velocidade de movimento da nave
     public float rotateSpeed = 100f; // velocidade de rota��o da nave
@@ -13,7 +14,12 @@ public class Nave : MonoBehaviour
     // método para recuperar vida
     public void RecuperarVida(int valorRecuperado)
     {
-        GameManager.instancia.vidaAtual += valorRecuperado;
+        if (GameManager.instancia.vidaAtual + valorRecuperado >= GameManager.instancia.vidaMaxima)
+        {
+            GameManager.instancia.vidaAtual = GameManager.instancia.vidaMaxima;
+        }else{
+            GameManager.instancia.vidaAtual = GameManager.instancia.vidaAtual + valorRecuperado;
+        }
         Debug.Log("Vida recuperada! Vida atual: " + GameManager.instancia.vidaAtual);
     }
 
