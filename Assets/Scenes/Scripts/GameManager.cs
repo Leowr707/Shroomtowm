@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     void Awake() {
         if(instancia == null) {
             instancia = this;
+           
         }
     }
 
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         vidaAtual = vidaAtual - dano;
         if(vidaAtual <= 0) {
             GameOver();
+            Debug.Log("funcionando");
         }
     }
 

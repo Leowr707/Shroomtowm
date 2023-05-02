@@ -35,7 +35,7 @@ public class InimigoAtaqueMissil : MonoBehaviour
         {
 
             GameObject tiro = Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
-            Destroy(tiro, 5);
+            Destroy(tiro, 20);
         }
     }
 

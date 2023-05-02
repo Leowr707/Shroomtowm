@@ -69,7 +69,7 @@ public class InimigoShotgun : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "tiroPlayer" || other.transform.tag == "Player")
+        if (other.transform.tag == "tiroPlayer" /*|| other.transform.tag == "Player"*/)
         {
             Destroy(other.gameObject);
             vida = vida - 1;

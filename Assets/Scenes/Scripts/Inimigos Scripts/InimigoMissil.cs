@@ -69,7 +69,7 @@ public class InimigoMissil : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "tiroPlayer" || other.transform.tag == "Player")
+        if (other.transform.tag == "tiroPlayer" /*|| other.transform.tag == "Player"*/)
         {
             Destroy(other.gameObject);
             vida = vida - 1;
@@ -93,12 +93,13 @@ public class InimigoMissil : MonoBehaviour
                     waveManager.EnemyDefeated();
                 }
             }
-            if (other.CompareTag("Player"))
 
-                if (other.transform.tag == "Player")
-                {
-                    GameManager.instancia.vidaAtual = 0;
-                }
+
+            if (other.transform.tag == "Player")
+            {
+                GameManager.instancia.vidaAtual = 0;
+
+            }
 
 
         }

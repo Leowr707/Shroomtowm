@@ -95,7 +95,7 @@ public class InimigoConfusao : MonoBehaviour
 
             if (vida <= 0)
             {
-                // Destr�i esse gameObject quando a vida dele chegar em 0
+                // Destroi esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
                 Destroy(this.gameObject);
                 AudioManager.instancia.TocarSomMorte();
