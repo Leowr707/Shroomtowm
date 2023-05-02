@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InimigoAtaque : MonoBehaviour
+public class InimigoAtaqueMissil : MonoBehaviour
 {
     [Header("Configuracoes do disparo do inimigo")]
     public float cdTiroInimigo;
@@ -20,7 +20,7 @@ public class InimigoAtaque : MonoBehaviour
             if (ativarTiro)
             {
                 playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-                // o tempo que levar√° para ativar o c√≥digo e de quando em quanto tempo ele vai se repetir
+                // o tempo que levar· para ativar o cÛdigo e de quando em quanto tempo ele vai se repetir
                 InvokeRepeating("Atirar", 2, cdTiroInimigo);
             }
 
@@ -29,15 +29,15 @@ public class InimigoAtaque : MonoBehaviour
         }
     }
 
-        void Atirar()
+    void Atirar()
+    {
+        if (Vector3.Distance(transform.position, playerTransform.position) <= distanciaMinimaDeDisparo)
         {
-            if (Vector3.Distance(transform.position, playerTransform.position) <= distanciaMinimaDeDisparo)
-            {
 
-                GameObject tiro = Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
-                Destroy(tiro, 5);
-            }
+            GameObject tiro = Instantiate(prefabTiroInimigo, spawnPointDoTiroInimigo.transform.position, spawnPointDoTiroInimigo.transform.rotation);
+            Destroy(tiro, 5);
         }
-    
+    }
+
 
 }

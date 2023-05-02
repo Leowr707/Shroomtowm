@@ -151,6 +151,7 @@ MonoBehaviour:
   recompensaPontos: 10
   somMorte: {fileID: 0}
   waveManager: {fileID: 0}
+  MorteFx: {fileID: 0}
   SomMorte: {fileID: 4650023587804376464}
   vida: 3
   materialDano: {fileID: 2100000, guid: 89d32a54a6d728145bb018b9c7904a30, type: 2}
@@ -172,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cdTiroInimigo: 0.8
+  distanciaMinimaDeDisparo: 60
   prefabTiroInimigo: {fileID: 4339087605490588367, guid: a494d169fd63f0340a55bec55e5fa584, type: 3}
   spawnPointDoTiroInimigo: {fileID: 4650023586971314248}
   ativarTiro: 1

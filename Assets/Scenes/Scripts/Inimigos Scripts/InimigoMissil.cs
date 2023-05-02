@@ -2,26 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class InimigoConfusao : MonoBehaviour
+public class InimigoMissil : MonoBehaviour
 {
 
-    public Transform Player; // referï¿½ncia para o objeto do jogador
+    [SerializeField] public Transform Player; // referência para o objeto do jogador
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
-    public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
-    
-    [Header("Configuraï¿½ï¿½es bï¿½sicas do inimigo")]
-    public int vida = 3;
-    public float alcance = 30f;
 
-    [Header("Configuraï¿½ï¿½o de textura")]
+    public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
+    public AudioSource somMorte; // Som que sera executado
+    public WaveManager waveManager;// script que faz parte do WaveManager
+    public GameObject MorteFx;
+
+    [SerializeField] private AudioSource SomMorte;
+
+    [Header("Configurações básicas do inimigo")]
+    public int vida = 3;
+
+    [Header("Configuração de textura")]
     //material da nave quando ele tomar dano
     public Material materialDano;
     //material original da nave
     public Material materialOriginal;
     //isso aqui que aplica o material no inimigo 
     MeshRenderer meshRenderer;
-    //quanto tempo a textura de dano ficarï¿½ na tela
+    //quanto tempo a textura de dano ficará na tela
     public float tempoTexturaDano;
 
     [Header("Drop do inimigo")]
@@ -30,16 +37,16 @@ public class InimigoConfusao : MonoBehaviour
     [SerializeField]
     [Range(0, 100)]
     private float chanceItemVida;
-
-    [SerializeField]
-    private ItemDeCura itemvidaprefab;
+    [SerializeField] private ItemDeCura itemvidaprefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.FindWithTag("Player").transform;
+        SomMorte = GameObject.Find("MorteInimigo").GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         materialOriginal = meshRenderer.material;
+
     }
 
     void Update()
@@ -47,43 +54,22 @@ public class InimigoConfusao : MonoBehaviour
         // Verifica se o objeto do jogador foi definido
         if (Player == null) return;
 
-        // Cï¿½lculo da distï¿½ncia entre o inimigo e o jogador
-        float distance = Vector3.Distance(transform.position, Player.position);
+        // Cálculo da direção para o jogador
+        Vector3 direction = Player.position - transform.position;
+        direction.Normalize();
 
-        // Verifica se a distï¿½ncia ï¿½ menor ou igual a 30
-        if (distance <= alcance)
-        {
-            // Define a direï¿½ï¿½o para o jogador
-            Vector3 direction = Player.position - transform.position;
-            direction.Normalize();
+        // Cálculo do ângulo de rotação em relação ao jogador
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            // Cï¿½lculo do ï¿½ngulo de rotaï¿½ï¿½o em relaï¿½ï¿½o ao jogador
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            // Aplica a rotaï¿½ï¿½o
-            transform.rotation = rotation;
-
-            // Desativa o movimento
-            return;
-        }
-
-        // Cï¿½lculo da direï¿½ï¿½o para o jogador
-        Vector3 moveDirection = Player.position - transform.position;
-        moveDirection.Normalize();
-
-        // Cï¿½lculo do ï¿½ngulo de rotaï¿½ï¿½o em relaï¿½ï¿½o ao jogador
-        float moveAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90f;
-        Quaternion moveRotation = Quaternion.AngleAxis(moveAngle, Vector3.forward);
-
-        // Aplica a rotaï¿½ï¿½o e movimento
-        transform.rotation = moveRotation;
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        // Aplica a rotação e movimento
+        transform.rotation = rotation;
+        transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "tiroPlayer")
+        if (other.transform.tag == "tiroPlayer" || other.transform.tag == "Player")
         {
             Destroy(other.gameObject);
             vida = vida - 1;
@@ -95,19 +81,25 @@ public class InimigoConfusao : MonoBehaviour
 
             if (vida <= 0)
             {
-                // Destrï¿½i esse gameObject quando a vida dele chegar em 0
+                // Destrói esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
                 Destroy(this.gameObject);
-                AudioManager.instancia.TocarSomMorte();
                 GameManager.instancia.adicionarPontos(recompensaPontos);
+                AudioManager.instancia.TocarSomMorte();
+                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
 
-
+                if (waveManager != null)
+                {
+                    waveManager.EnemyDefeated();
+                }
             }
+            if (other.CompareTag("Player"))
 
-            if (other.transform.tag == "Player")
-            {
-                GameManager.instancia.vidaAtual = 0;
-            }
+                if (other.transform.tag == "Player")
+                {
+                    GameManager.instancia.vidaAtual = 0;
+                }
+
 
         }
         else if (other.transform.tag == "tiroEspecialPlayer")
@@ -122,9 +114,9 @@ public class InimigoConfusao : MonoBehaviour
 
             if (vida <= 0)
             {
-                // Destrï¿½i esse gameObject quando a vida dele chegar em 0
+                // Destrói esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
-                
+                SomMorte.Play();
                 Destroy(this.gameObject);
 
             }
@@ -133,9 +125,9 @@ public class InimigoConfusao : MonoBehaviour
 
     private IEnumerator ResetMaterial()
     {
-        // Vai executar depois que o tempo de duraï¿½ï¿½o do dano passar
+        // Vai executar depois que o tempo de duração do dano passar
         yield return new WaitForSeconds(tempoTexturaDano);
-        // Depois desse tempo aï¿½ de cima passar o material do inimigo vai voltar pro base   
+        // Depois desse tempo aí de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
     }
 

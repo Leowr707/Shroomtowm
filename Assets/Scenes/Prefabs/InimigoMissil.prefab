@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3546153514633431132
+--- !u!1 &8460435951189144543
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,30 +8,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3546153514633431135}
+  - component: {fileID: 8460435951189144542}
   m_Layer: 0
-  m_Name: SpawnTiroInimigoConfusao
+  m_Name: spawnPointMissil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3546153514633431135
+--- !u!4 &8460435951189144542
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3546153514633431132}
+  m_GameObject: {fileID: 8460435951189144543}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.017369727, y: 1.33, z: 0.02}
-  m_LocalScale: {x: 0.7895325, y: 0.7895325, z: 0.7895325}
+  m_LocalPosition: {x: -0.03, y: 1.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6059159667411483923}
+  m_Father: {fileID: 8460435952226022822}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!1 &6059159667411483918
+--- !u!1 &8460435952226022823
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,50 +39,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6059159667411483923}
-  - component: {fileID: 6059159667411483922}
-  - component: {fileID: 6059159667411483921}
-  - component: {fileID: 6059159667411483920}
-  - component: {fileID: 6059159667411483919}
-  - component: {fileID: 3546153513640644467}
+  - component: {fileID: 8460435952226022822}
+  - component: {fileID: 8460435952226022826}
+  - component: {fileID: 8460435952226022827}
+  - component: {fileID: 8460435952226022820}
+  - component: {fileID: 8460435952226022821}
+  - component: {fileID: 8460435952226022825}
   m_Layer: 0
-  m_Name: InimigoConfusao
+  m_Name: InimigoMissil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6059159667411483923
+--- !u!4 &8460435952226022822
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6059159667411483918}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -5.3, z: -0.0358}
-  m_LocalScale: {x: 1.2665724, y: 1.2665724, z: 1.2665724}
+  m_GameObject: {fileID: 8460435952226022823}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -25.021599, y: -7.58, z: -0.22483346}
+  m_LocalScale: {x: 0.7367, y: 0.7367, z: 0.7367}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3546153514633431135}
+  - {fileID: 8460435951189144542}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6059159667411483922
+--- !u!33 &8460435952226022826
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6059159667411483918}
+  m_GameObject: {fileID: 8460435952226022823}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6059159667411483921
+--- !u!23 &8460435952226022827
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6059159667411483918}
+  m_GameObject: {fileID: 8460435952226022823}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -96,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5a6be6a1730d99548bb5fa82f77e6e16, type: 2}
+  - {fileID: 2100000, guid: 1107610367bdbb04a9744ff95a257aed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,56 +118,60 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6059159667411483920
+--- !u!136 &8460435952226022820
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6059159667411483918}
+  m_GameObject: {fileID: 8460435952226022823}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6059159667411483919
+--- !u!114 &8460435952226022821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6059159667411483918}
+  m_GameObject: {fileID: 8460435952226022823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9a26032711199a47ace4c893819d385, type: 3}
+  m_Script: {fileID: 11500000, guid: e45a5253bcb374549b1b5a7ae170c791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  moveSpeed: 1.4
-  recompensaPontos: 0
-  vida: 5
-  alcance: 30
-  materialDano: {fileID: 2100000, guid: 89d32a54a6d728145bb018b9c7904a30, type: 2}
-  materialOriginal: {fileID: 2100000, guid: 5a6be6a1730d99548bb5fa82f77e6e16, type: 2}
+  moveSpeed: 7
+  recompensaPontos: 18
+  somMorte: {fileID: 0}
+  waveManager: {fileID: 0}
+  MorteFx: {fileID: 0}
+  SomMorte: {fileID: 0}
+  vida: 2
+  materialDano: {fileID: 2100000, guid: c09d35c7ad9c1df4aa2866dbdfd74f49, type: 2}
+  materialOriginal: {fileID: 2100000, guid: 1107610367bdbb04a9744ff95a257aed, type: 2}
   tempoTexturaDano: 0.6
   itemVida: {fileID: 0}
-  chanceItemVida: 0
+  chanceItemVida: 100
   itemvidaprefab: {fileID: 6631204380572736718, guid: 734452c81635e9c4c9e3f6f93392b734, type: 3}
---- !u!114 &3546153513640644467
+--- !u!114 &8460435952226022825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6059159667411483918}
+  m_GameObject: {fileID: 8460435952226022823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94d9d454462d9ff4eab4c2ce28fd2438, type: 3}
+  m_Script: {fileID: 11500000, guid: eedd458212d6c394387b4c340bf170fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cdTiroInimigo: 1.5
-  prefabTiroInimigo: {fileID: 1887198956595560777, guid: da1c2a395db09354baa1ddaec57fe97b, type: 3}
-  spawnPointDoTiroInimigo: {fileID: 3546153514633431132}
+  cdTiroInimigo: 2
+  distanciaMinimaDeDisparo: 60
+  prefabTiroInimigo: {fileID: 1242575114141761491, guid: 05284a5f02e045b4cb28d1a39e7de4f8, type: 3}
+  spawnPointDoTiroInimigo: {fileID: 8460435951189144543}
   ativarTiro: 1

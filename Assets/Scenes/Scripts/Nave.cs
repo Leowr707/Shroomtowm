@@ -110,6 +110,18 @@ public class Nave : MonoBehaviour
             StartCoroutine(ResetMaterial());
         }
 
+        if (other.transform.tag == "tiroInimigoMissil")
+        {
+            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+            GameManager.instancia.RemoverVida(1);
+
+            // Muda a textura do inimigo para o material de dano quando tomar dano
+            meshRenderer.material = materialDano;
+            // Vai executar algo depois que o TempoTexturaDanoPassar
+            StartCoroutine(ResetMaterial());
+        }
+
         if (other.transform.tag == "tiroInimigoConfusao")
         {
             other.gameObject.SetActive(false);
