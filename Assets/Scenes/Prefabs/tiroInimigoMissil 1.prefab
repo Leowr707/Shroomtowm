@@ -127,8 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18aef6c95e57a24881b5e3aa9863120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forca: 30
-  distanciaMaxima: 5
-  desaceleracao: 20
-  Player: {fileID: 2269981010896177050, guid: dd9a37723bededa4a81e8582e88bc07d, type: 3}
-  moveSpeed: 0
+  forca: 1500
+  distanciaMaxima: 30
+  player: {fileID: 2269981010896177050, guid: dd9a37723bededa4a81e8582e88bc07d, type: 3}

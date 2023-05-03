@@ -1,63 +1,43 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class TiroMissil : MonoBehaviour
 {
     public float forca;
-    public float distanciaMaxima;
-    public float desaceleracao;
+    public float distanciaMaxima = 30f;
+    private float distanciaPercorrida = 0f;
     public Transform Player;
-    public float moveSpeed = 5f; // velocidade de movimento do inimigo
-
-    private float distanciaPercorrida;
-    private bool parado;
 
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = transform.forward * forca;
+
+        if (!GetComponent<Rigidbody>())
+        {
+            Destroy(this);
+        }
+        else { 
+
+        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * forca * Time.deltaTime;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (!parado)
+        float distanciaPercorridaAtual = distanciaPercorrida + GetComponent<Rigidbody>().velocity.magnitude * Time.deltaTime;
+        if (distanciaPercorridaAtual < distanciaMaxima)
         {
-            float distanciaPercorridaAtual = distanciaPercorrida + GetComponent<Rigidbody>().velocity.magnitude * Time.deltaTime;
-            if (distanciaPercorridaAtual < distanciaMaxima)
-            {
-                distanciaPercorrida = distanciaPercorridaAtual;
-            }
-            else
-            {
-                GetComponent<Rigidbody>().velocity -= GetComponent<Rigidbody>().velocity.normalized * desaceleracao * Time.deltaTime;
-                if (GetComponent<Rigidbody>().velocity.magnitude < 0.1f)
-                {
-                    GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    parado = true;
-                }
-            }
+            distanciaPercorrida = distanciaPercorridaAtual;
         }
         else
         {
-            Vector3 direction = Player.position - transform.position;
-            direction.Normalize();
-
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            // Aplica a rotação
-            transform.rotation = rotation;
-
-            if (direction.magnitude < 1.0f)
-            {
-                direction = Player.position - transform.position;
-                direction.Normalize();
-                transform.rotation = Quaternion.LookRotation(direction);
-            }
+            Destroy(GetComponent<Rigidbody>());
+           
         }
-
-        Vector3 moveDirection = transform.up;
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        if (!GetComponent<Rigidbody>())
+        {
+            
+        }
     }
 }

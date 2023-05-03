@@ -10,11 +10,11 @@ public class InimigoConfusao : MonoBehaviour
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
     public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
     
-    [Header("Configura��es b�sicas do inimigo")]
+    [Header("Configuracoes basicas do inimigo")]
     public int vida = 3;
     public float alcance = 30f;
 
-    [Header("Configura��o de textura")]
+    [Header("Configuracao de textura")]
     //material da nave quando ele tomar dano
     public Material materialDano;
     //material original da nave
@@ -47,36 +47,36 @@ public class InimigoConfusao : MonoBehaviour
         // Verifica se o objeto do jogador foi definido
         if (Player == null) return;
 
-        // C�lculo da dist�ncia entre o inimigo e o jogador
+        // C�lculo da distancia entre o inimigo e o jogador
         float distance = Vector3.Distance(transform.position, Player.position);
 
-        // Verifica se a dist�ncia � menor ou igual a 30
+        // Verifica se a distancia eh menor ou igual a 30
         if (distance <= alcance)
         {
-            // Define a dire��o para o jogador
+            // Define a direcao para o jogador
             Vector3 direction = Player.position - transform.position;
             direction.Normalize();
 
-            // C�lculo do �ngulo de rota��o em rela��o ao jogador
+            // Calculo do angulo de rotacao em relacao ao jogador
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            // Aplica a rota��o
+            // Aplica a rotacao
             transform.rotation = rotation;
 
             // Desativa o movimento
             return;
         }
 
-        // C�lculo da dire��o para o jogador
+        // C�lculo da direcao para o jogador
         Vector3 moveDirection = Player.position - transform.position;
         moveDirection.Normalize();
 
-        // C�lculo do �ngulo de rota��o em rela��o ao jogador
+        // C�lculo do �ngulo de rotacao em relacao ao jogador
         float moveAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90f;
         Quaternion moveRotation = Quaternion.AngleAxis(moveAngle, Vector3.forward);
 
-        // Aplica a rota��o e movimento
+        // Aplica a rotacao e movimento
         transform.rotation = moveRotation;
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
     }
@@ -133,9 +133,8 @@ public class InimigoConfusao : MonoBehaviour
 
     private IEnumerator ResetMaterial()
     {
-        // Vai executar depois que o tempo de dura��o do dano passar
+        // Vai executar depois que o tempo de duracao do dano passar
         yield return new WaitForSeconds(tempoTexturaDano);
-        // Depois desse tempo a� de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
     }
 
