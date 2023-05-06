@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Nave : MonoBehaviour
 {
     public static Nave instancia;
-    [Header("Configura��es b�sicas do player")]
+    [Header("Configuracoes basicas do player")]
     public float moveSpeed = 5f; // velocidade de movimento da nave
     public float rotateSpeed = 100f; // velocidade de rota��o da nave
     public float maxSpeed = 20f; // velocidade m�xima da nave
@@ -36,18 +36,19 @@ public class Nave : MonoBehaviour
     public float tempoTexturaDano;
     //quanto tempo a textura de dano ficar� na tela
     public float tempoTexturaConfusao;
+    public bool confuso;
 
-    [Header("Configura��es de tipo e spawn")]
+    [Header("Configuracoes de tipo e spawn")]
     public GameObject projetil; //onde coloca o projetil
     public Transform spawnPoint; //onde o tiro vai spawnar
     public GameObject tiroEspecial;
 
-    [Header("Configura��es do tiro normal")]
+    [Header("Configuracoes do tiro normal")]
     public float intervaloTiro = 1;
     float tiroInicial, proximoTiro;
     public int tempoDestruicaoTiro = 5;
 
-    [Header("Configura��es do tiro Especial")]
+    [Header("Configuracoes do tiro Especial")]
     public float intervaloTiroEspecial = 1;
     float tiroInicialEspecial, proximoTiroEspecial;
     public int tempoDestruicaoTiroEspecial = 5;
@@ -68,9 +69,10 @@ public class Nave : MonoBehaviour
         Atirar();
         AtirarEspecial();
 
-        float horizontal = Input.GetAxis("Horizontal"); // recebe a entrada dos bot�es A e D
-        float vertical = Input.GetAxis("Vertical"); // recebe a entrada do bot�o W
-
+        if (confuso == false) { 
+        float horizontal = Input.GetAxis("Horizontal"); // recebe a entrada dos botoes A e D
+        float vertical = Input.GetAxis("Vertical"); // recebe a entrada do botao W
+        
         // gira a nave em torno do eixo Z baseado na entrada horizontal
         transform.Rotate(0f, 0f, -horizontal * rotateSpeed * Time.deltaTime);
 
@@ -83,7 +85,7 @@ public class Nave : MonoBehaviour
         {
             rb.useGravity = true; // ativa a gravidade
         }
-
+        
         // aplica for�a para mover a nave para cima baseado na entrada vertical
         Vector3 upForce = transform.up * vertical * impulseForce;
         rb.AddForce(upForce);
@@ -96,6 +98,39 @@ public class Nave : MonoBehaviour
     }
 
        
+        {
+            if (confuso == true)
+            {
+                float horizontal = -Input.GetAxis("Horizontal"); // recebe a entrada dos botoes A e D
+                float vertical = Input.GetAxis("Vertical"); // recebe a entrada do botao W
+
+                // gira a nave em torno do eixo Z baseado na entrada horizontal
+                transform.Rotate(0f, 0f, -horizontal * rotateSpeed * Time.deltaTime);
+
+                // verifica se a tecla W est� sendo pressionada continuamente
+                if (Input.GetKey(KeyCode.W))
+                {
+                    rb.useGravity = false; // desativa a gravidade
+                }
+                else
+                {
+                    rb.useGravity = true; // ativa a gravidade
+                }
+
+                // aplica for�a para mover a nave para cima baseado na entrada vertical
+                Vector3 upForce = transform.up * vertical * impulseForce;
+                rb.AddForce(upForce);
+
+                // limita a velocidade da nave
+                if (rb.velocity.magnitude > maxSpeed)
+                {
+                    rb.velocity = rb.velocity.normalized * maxSpeed;
+                }
+            }
+        }
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "tiroInimigo")
@@ -126,8 +161,10 @@ public class Nave : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
-           
 
+            
+
+            confuso = true;
             // Muda a textura do inimigo para o material de confusao quando tomar o tiro
             meshRenderer.material = materialDanoConfusao;
             // Vai executar algo depois que o TempoTexturaDanoPassar
@@ -140,20 +177,22 @@ public class Nave : MonoBehaviour
         yield return new WaitForSeconds(tempoTexturaDano);
         // Depois desse tempo a� de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
+       
     }
 
     private IEnumerator ResetMaterialConfusao()
     {
-        // Vai executar depois que o tempo de dura��o do dano passar
+        // Vai executar depois que o tempo de duracao do dano passar
         yield return new WaitForSeconds(tempoTexturaConfusao);
         // Depois desse tempo a� de cima passar o material do inimigo vai voltar pro base   
         meshRenderer.material = materialOriginal;
+        confuso = false;
     }
 
 
     void Atirar()
     {
-        // Verifica se o jogador apertou a tecla de espa�o
+        // Verifica se o jogador apertou a tecla de espaco
         // Se apertou, vai criar o tiro
         tiroInicial = tiroInicial + Time.deltaTime;
 
@@ -163,9 +202,9 @@ public class Nave : MonoBehaviour
 
             proximoTiro = tiroInicial + intervaloTiro;
 
-            // Vai criar na tela um projetil, em uma determinada posi��o, com uma rota��o
+            // Vai criar na tela um projetil, em uma determinada posicao, com uma rotacao
             // spawnPoint.position -> Representa o ponto onde o projetil vai ser criado
-            // spawnPoint.rotation -> Rota��o que o projetil criado vai possuir
+            // spawnPoint.rotation -> Rotacao que o projetil criado vai possuir
             GameObject tiro = Instantiate(projetil, spawnPoint.position, spawnPoint.transform.rotation);
             //obj.GetComponent<bullet>();
 
@@ -177,7 +216,7 @@ public class Nave : MonoBehaviour
 
     void AtirarEspecial()
     {
-        // Verifica se o jogador apertou a tecla de espa�o
+        // Verifica se o jogador apertou a tecla de espaco
         // Se apertou, vai criar o tiro
         tiroInicialEspecial = tiroInicialEspecial + Time.deltaTime;
 
@@ -186,9 +225,9 @@ public class Nave : MonoBehaviour
 
             proximoTiroEspecial = tiroInicialEspecial + intervaloTiroEspecial;
 
-            // Vai criar na tela um projetil, em uma determinada posi��o, com uma rota��o
+            // Vai criar na tela um projetil, em uma determinada posicao, com uma rotacao
             // spawnPoint.position -> Representa o ponto onde o projetil vai ser criado
-            // spawnPoint.rotation -> Rota��o que o projetil criado vai possuir
+            // spawnPoint.rotation -> Rotacao que o projetil criado vai possuir
             GameObject TiroEspecial = Instantiate(tiroEspecial, spawnPoint.position, spawnPoint.transform.rotation);
 
             proximoTiroEspecial = proximoTiroEspecial - tiroInicialEspecial;
