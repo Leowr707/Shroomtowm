@@ -147,12 +147,15 @@ public class Nave : MonoBehaviour
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
             GameManager.instancia.RemoverVida(1);
-
-            // Muda a textura do inimigo para o material de dano quando tomar dano
-            meshRenderer.material = materialDano;
-            // Vai executar algo depois que o TempoTexturaDanoPassar
-            StartCoroutine(ResetMaterial());
+            if (confuso == false)
+            {
+                // Muda a textura do inimigo para o material de dano quando tomar dano
+                meshRenderer.material = materialDano;
+                // Vai executar algo depois que o TempoTexturaDanoPassar
+                StartCoroutine(ResetMaterial());
+            }
         }
+
 
         if (other.transform.tag == "tiroInimigoMissil")
         {
@@ -160,24 +163,34 @@ public class Nave : MonoBehaviour
             Destroy(other.gameObject);
             GameManager.instancia.RemoverVida(1);
 
-            // Muda a textura do inimigo para o material de dano quando tomar dano
-            meshRenderer.material = materialDano;
-            // Vai executar algo depois que o TempoTexturaDanoPassar
-            StartCoroutine(ResetMaterial());
+            if (confuso == false)
+            {
+                // Muda a textura do inimigo para o material de dano quando tomar dano
+                meshRenderer.material = materialDano;
+                // Vai executar algo depois que o TempoTexturaDanoPassar
+                StartCoroutine(ResetMaterial());
+            }
         }
-
+        
         if (other.transform.tag == "tiroInimigoConfusao")
         {
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
 
-            
 
-            confuso = true;
-            // Muda a textura do inimigo para o material de confusao quando tomar o tiro
-            meshRenderer.material = materialDanoConfusao;
-            // Vai executar algo depois que o TempoTexturaDanoPassar
-            StartCoroutine(ResetMaterialConfusao());
+            if (confuso == false)
+            {
+                confuso = true;
+                // Muda a textura do inimigo para o material de confusao quando tomar o tiro
+                meshRenderer.material = materialDanoConfusao;
+                // Vai executar algo depois que o TempoTexturaDanoPassar
+                StartCoroutine(ResetMaterialConfusao());
+            }
+
+            else { 
+                GameManager.instancia.RemoverVida(2); 
+            }
+
         }
     }
     private IEnumerator ResetMaterial()
