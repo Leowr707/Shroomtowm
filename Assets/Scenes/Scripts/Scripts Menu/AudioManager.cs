@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,9 +14,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip tiroJogadorSFX;
     public AudioClip tiroInimigoSFX;
     public AudioClip explosaoSFX;
+    public Slider controleVolume;
+    public Slider controleSons;
+    
     public AudioClip powerUpSFX;
     public AudioClip VidaSFX;
     public AudioSource audioSource;
+
 
     private void Awake()
     {
@@ -33,10 +38,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void TocarSomBMG() {
+    private void Start()
+    {
         audioSource = gameObject.GetComponent<AudioSource>();
-        gameObject.GetComponent<AudioSource>().PlayOneShot(bgmSound, 0.8f);
+        audioSource.PlayOneShot(bgmSound, 0.7f);
     }
+
 
     public void TocarSomVida() 
     {
@@ -46,6 +53,14 @@ public class AudioManager : MonoBehaviour
     public void TocarSomMorte()
     {
         gameObject.GetComponent<AudioSource>().PlayOneShot(explosaoSFX, 0.8f);
+    }
+
+    public void MudarVolume() {
+        AudioListener.volume = controleVolume.value;
+    }
+
+    public void MudarSons() {
+        AudioListener.volume = controleVolume.value;
     }
 
 

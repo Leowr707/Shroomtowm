@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class Camera : MonoBehaviour
 {
     public Transform target; // Transform do objeto que a camera deve seguir
     public float smoothSpeed = 100f; // Velocidade de movimento da camera

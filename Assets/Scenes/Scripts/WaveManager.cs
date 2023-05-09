@@ -3,62 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class WaveManager : MonoBehaviour
 {
-    public int currentWave = 1;
-    public int enemiesPerWave = 10;
-    public int bossWaveInterval = 10;
-    public GameObject enemyPrefab;
-    public GameObject bossPrefab;
-    public Transform spawnPoint;
     public Text waveText;
-
-    private int enemiesRemaining;
+    public GameObject[] enemyPrefabs;
+    public Transform[] spawnPoints;
+    public float waveInterval = 2f;
+    public int maxEnemies = 10;
+    private int currentWave = 1;
+    private bool spawningEnemies = false;
 
     private void Start()
     {
-        StartWave();
+        StartCoroutine(SpawnWave());
     }
 
-    private void StartWave()
+    private IEnumerator SpawnWave()
     {
-        enemiesRemaining = enemiesPerWave;
-        StartCoroutine(SpawnEnemies());
-        waveText.text = "Wave: " + currentWave;
-        Debug.Log("Starting wave " + currentWave + " with " + enemiesPerWave + " enemies.");
-    }
-    
-
-    private IEnumerator SpawnEnemies()
-    {
-    int enemiesSpawned = 0;
-
-    while (enemiesSpawned < enemiesPerWave)
-    {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        enemiesSpawned++;
-        yield return new WaitForSeconds(1f);
-    }
-
-    if (currentWave % bossWaveInterval == 0)
-    {
+        spawningEnemies = true;
+        waveText.text = "Wave " + currentWave;
+        waveText.gameObject.SetActive(true);
         yield return new WaitForSeconds(2f);
-        Instantiate(bossPrefab, spawnPoint.position, spawnPoint.rotation);
-    }
-}
+        waveText.gameObject.SetActive(false);
 
-    public void EnemyDefeated()
-    {
-    enemiesRemaining--;
+        int enemiesToSpawn = currentWave * 10;
+        int enemiesSpawned = 0;
 
-    if (enemiesRemaining <= 0)
-    {
+        while (enemiesSpawned < enemiesToSpawn)
+        {
+            if (GameObject.FindGameObjectsWithTag("Taginimigo").Length < maxEnemies)
+            {
+                int randomIndex = Random.Range(0, enemyPrefabs.Length);
+                GameObject enemy = Instantiate(enemyPrefabs[randomIndex], GetRandomSpawnPoint(), Quaternion.identity);
+                enemiesSpawned++;
+            }
+
+            yield return new WaitForSeconds(waveInterval);
+        }
+
+        spawningEnemies = false;
         currentWave++;
-        Debug.Log("Starting next wave: " + currentWave);
-        StartWave();
     }
-}
+
+    private Vector3 GetRandomSpawnPoint()
+    {
+        int randomIndex = Random.Range(0, spawnPoints.Length);
+        return spawnPoints[randomIndex].position;
+    }
+
+    private void Update()
+    {
+        if (!spawningEnemies && GameObject.FindGameObjectsWithTag("Taginimigo").Length == 0)
+        {
+            StartCoroutine(SpawnWave());
+        }
+    }
 }
 
 

@@ -14,11 +14,16 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instancia;
     AudioSource audioSource;
+    public Slider controleVolume;
 
     public Transform gameOver;
 
     public Text UIPontos;
     int auxPontuacao;
+
+    public void MudarVolume() {
+        AudioListener.volume = controleVolume.value;
+    }
 
     void Awake() {
         if(instancia == null) {
@@ -30,8 +35,7 @@ public class GameManager : MonoBehaviour
     void Start() {
         //A vida inicial que o jogador vai comecar, sera a vida maxima permitida
         vidaAtual = vidaMaxima;
-        AudioManager.instancia.TocarSomBMG();
-        audioSource = gameObject.GetComponent<AudioSource>();
+        
     }
 
     void Update() {

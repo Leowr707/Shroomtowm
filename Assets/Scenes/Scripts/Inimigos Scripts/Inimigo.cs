@@ -4,17 +4,16 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Inimigo : MonoBehaviour
 {
-
+    private WaveManager gerenciadorDeOndas;
     [SerializeField]public Transform Player; // referência para o objeto do jogador
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
-
     public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
-    public AudioSource somMorte; // Som que sera executado
     public WaveManager waveManager;// script que faz parte do WaveManager
-    public GameObject MorteFx;
+    [SerializeField] private CameraShake cameraShake; // referência ao script de shake de câmera
 
     [SerializeField] private AudioSource SomMorte;
 
@@ -41,6 +40,7 @@ public class Inimigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        waveManager = GameObject.FindObjectOfType<WaveManager>(); 
         Player = GameObject.FindWithTag("Player").transform;
         SomMorte = GameObject.Find("MorteInimigo").GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
@@ -81,16 +81,15 @@ public class Inimigo : MonoBehaviour
             if (vida <= 0)
             {
                 // Destrói esse gameObject quando a vida dele chegar em 0
+                
+                
+                
                 SoltarItemVida();
                 Destroy(this.gameObject);
                 GameManager.instancia.adicionarPontos(recompensaPontos);
                 AudioManager.instancia.TocarSomMorte();
                 AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
-
-                if (waveManager != null)
-                {
-                    waveManager.EnemyDefeated();
-                }
+                cameraShake.Shake();
             }
 
                 if (other.transform.tag == "Player")
@@ -99,6 +98,7 @@ public class Inimigo : MonoBehaviour
                 
 
                 }
+                
             
             
 
@@ -143,5 +143,13 @@ public class Inimigo : MonoBehaviour
         }
 
     }
+    /*void OnDestroy()
+    {
+        waveManager.InimigoDestruido();
+    }*/
+    
+
+
+
 
 }
