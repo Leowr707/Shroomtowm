@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Cinemachine;
 
 public class Inimigo : MonoBehaviour
 {
@@ -12,8 +13,7 @@ public class Inimigo : MonoBehaviour
     [SerializeField]public Transform Player; // referência para o objeto do jogador
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
     public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
-    public WaveManager waveManager;// script que faz parte do WaveManager
-
+    public CinemachineImpulseSource source;
     [SerializeField] private AudioSource SomMorte;
 
     [Header("Configurações básicas do inimigo")]
@@ -39,11 +39,13 @@ public class Inimigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveManager = GameObject.FindObjectOfType<WaveManager>(); 
+        
+        
         Player = GameObject.FindWithTag("Player").transform;
         SomMorte = GameObject.Find("MorteInimigo").GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         materialOriginal = meshRenderer.material;
+        
         
     }
 
@@ -79,18 +81,13 @@ public class Inimigo : MonoBehaviour
 
             if (vida <= 0)
             {
-                // Destrói esse gameObject quando a vida dele chegar em 0
-                
-                
-                
                 SoltarItemVida();
+                source.GenerateImpulse();
                 Destroy(this.gameObject);
                 GameManager.instancia.adicionarPontos(recompensaPontos);
                 AudioManager.instancia.TocarSomMorte();
-                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
-                
+                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);                
             }
-
                 if (other.transform.tag == "Player")
                 {
                      GameManager.instancia.vidaAtual = 0;

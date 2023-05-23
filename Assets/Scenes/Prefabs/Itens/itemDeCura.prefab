@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valorDeCura: 3
+  VidaText: {fileID: 0}
 --- !u!65 &-7283554750820340749
 BoxCollider:
   m_ObjectHideFlags: 0

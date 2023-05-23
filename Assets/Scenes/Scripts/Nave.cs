@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class Nave : MonoBehaviour
 {
@@ -15,6 +16,16 @@ public class Nave : MonoBehaviour
     public float yMax;
     public float xMin;
     public float xMax;
+
+    public Text VidaText;
+    //public CinemachineImpulseSource source;
+
+    private IEnumerator vidatxt()
+    {       
+            VidaText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            VidaText.gameObject.SetActive(false);
+    }
     // método para recuperar vida
     public void RecuperarVida(int valorRecuperado)
     {
@@ -154,6 +165,8 @@ public class Nave : MonoBehaviour
                 // Vai executar algo depois que o TempoTexturaDanoPassar
                 StartCoroutine(ResetMaterial());
             }
+
+            
         }
 
 
@@ -191,6 +204,10 @@ public class Nave : MonoBehaviour
                 GameManager.instancia.RemoverVida(2); 
             }
 
+        }
+        if(other.CompareTag("itemDeCura"))
+        {
+            StartCoroutine(vidatxt());
         }
     }
     private IEnumerator ResetMaterial()
@@ -257,6 +274,8 @@ public class Nave : MonoBehaviour
             Destroy(TiroEspecial, tempoDestruicaoTiroEspecial);
         }
     }
-    
-    
+        
 }
+    
+    
+

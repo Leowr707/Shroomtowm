@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class ItemDeCura : MonoBehaviour
 
 
 {
     public int valorDeCura = 1;
+    [SerializeField]public GameObject VidaText;
+
+    private IEnumerator vidatxt()
+    {
+            VidaText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            VidaText.gameObject.SetActive(false);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,7 +26,8 @@ public class ItemDeCura : MonoBehaviour
         {
             nave.RecuperarVida(valorDeCura);
             AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.VidaSFX, 0.5f);
-            AudioManager.instancia.TocarSomVida();          
+            AudioManager.instancia.TocarSomVida();
+            vidatxt();      
             Destroy(gameObject);
         }
     }

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Tiro : MonoBehaviour
 {
     public float forca;
-
+    //public CinemachineImpulseSource source;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,15 @@ public class Tiro : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * forca * Time.deltaTime;
 
 
+
+    }
+
+    void OnCollisionEnter(Collision other) 
+    {
+      if(other.transform.tag == "Taginimigo")
+      {
+        //source.GenerateImpulse();
+      }   
 
     }
 
