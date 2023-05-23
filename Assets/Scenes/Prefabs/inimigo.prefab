@@ -153,6 +153,7 @@ MonoBehaviour:
   source: {fileID: 3603808611122818959}
   SomMorte: {fileID: 4650023587804376464}
   vida: 3
+  particlePrefab: {fileID: 417761080263594737, guid: 7800b8f6b712bfe49bd663eeb3ebe1e4, type: 3}
   materialDano: {fileID: 2100000, guid: 89d32a54a6d728145bb018b9c7904a30, type: 2}
   materialOriginal: {fileID: 2100000, guid: ce44bab60bf78a8479c1b69d4b7b14c1, type: 2}
   tempoTexturaDano: 0.6

@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forca: 2000
+  source: {fileID: 0}
 --- !u!54 &4339087605490588209
 Rigidbody:
   m_ObjectHideFlags: 0

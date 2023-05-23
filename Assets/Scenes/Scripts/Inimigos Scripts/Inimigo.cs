@@ -18,6 +18,7 @@ public class Inimigo : MonoBehaviour
 
     [Header("Configurações básicas do inimigo")]
     public int vida = 3;
+    public GameObject particlePrefab;
 
     [Header("Configuração de textura")]
     //material da nave quando ele tomar dano
@@ -82,6 +83,7 @@ public class Inimigo : MonoBehaviour
             if (vida <= 0)
             {
                 SoltarItemVida();
+                Instantiate(particlePrefab, transform.position, transform.rotation);
                 source.GenerateImpulse();
                 Destroy(this.gameObject);
                 GameManager.instancia.adicionarPontos(recompensaPontos);
