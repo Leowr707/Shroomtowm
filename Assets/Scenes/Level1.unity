@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -261,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &95507718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2533,8 +2533,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 5}
+  m_AnchoredPosition: {x: 2.1600342, y: 0.5335083}
+  m_SizeDelta: {x: 16.0965, y: 4.0871}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &854494953
 MonoBehaviour:
@@ -2556,8 +2556,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0bc0bc19a4ddd7f44b1680aae61078ec, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2979,8 +2979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e9ad5a9de0d764fb92f08b48e16a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDuration: 123123
-  shakeIntensity: 123123
 --- !u!1 &967044325
 GameObject:
   m_ObjectHideFlags: 0
@@ -5767,6 +5765,10 @@ PrefabInstance:
       value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: projetil
+      value: 
+      objectReference: {fileID: 4359442669784393443, guid: 4eafebda988b9724890b6e60ef94ec2d, type: 3}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
       propertyPath: intervaloTiro
       value: 0.08
       objectReference: {fileID: 0}
@@ -5818,7 +5820,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6459282931865774373, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
 --- !u!1001 &3546153514464475465
 PrefabInstance:

@@ -13,7 +13,6 @@ public class Inimigo : MonoBehaviour
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
     public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
     public WaveManager waveManager;// script que faz parte do WaveManager
-    [SerializeField] private CameraShake cameraShake; // referência ao script de shake de câmera
 
     [SerializeField] private AudioSource SomMorte;
 
@@ -89,7 +88,7 @@ public class Inimigo : MonoBehaviour
                 GameManager.instancia.adicionarPontos(recompensaPontos);
                 AudioManager.instancia.TocarSomMorte();
                 AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
-                cameraShake.Shake();
+                
             }
 
                 if (other.transform.tag == "Player")

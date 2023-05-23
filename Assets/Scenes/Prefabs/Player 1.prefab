@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 2104011929012577299}
   - component: {fileID: 2104011929012577301}
   - component: {fileID: 2104011929012577300}
+  - component: {fileID: 6459282931865774373}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -606,6 +607,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6459282931865774373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104011929012577305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cacd8f8cebbe04b9dd363f9e5777c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 100
+  rotateSpeed: 100
+  maxSpeed: 20
+  impulseForce: 10
+  materialDano: {fileID: 0}
+  materialDanoConfusao: {fileID: 0}
+  materialOriginal: {fileID: 0}
+  tempoTexturaDano: 0
+  tempoTexturaConfusao: 0
+  projetil: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  tiroEspecial: {fileID: 0}
+  intervaloTiro: 1
+  tempoDestruicaoTiro: 5
+  intervaloTiroEspecial: 1
+  tempoDestruicaoTiroEspecial: 5
 --- !u!1 &2104011929187262628
 GameObject:
   m_ObjectHideFlags: 0
