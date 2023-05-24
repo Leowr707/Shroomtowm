@@ -37,6 +37,10 @@ public class Inimigo : MonoBehaviour
     private float chanceItemVida;
     [SerializeField]private ItemDeCura itemvidaprefab;
 
+    [Header("Configurações de distância entre inimigos")]
+    public float distMinimaEntreInimigos = 2f; // Distância mínima desejada entre os inimigos
+    public float desvioForca = 1f; // Força do desvio aplicado para evitar colisões
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,16 +60,53 @@ public class Inimigo : MonoBehaviour
         if (Player == null) return;
 
         // Cálculo da direção para o jogador
-        Vector3 direction = Player.position - transform.position;
-        direction.Normalize();
+        Vector3 playerDirection = Player.position - transform.position;
+        playerDirection.Normalize();
 
-        // Cálculo do ângulo de rotação em relação ao jogador
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        // Aplica o desvio suave para evitar colisões com outros inimigos
+        Vector3 avoidanceDirection = AvoidOtherEnemies();
+        Vector3 desiredDirection = playerDirection + avoidanceDirection;
+
+        // Suaviza a direção desejada usando um algoritmo de interpolação
+        Vector3 smoothDirection = Vector3.Lerp(transform.up, desiredDirection, Time.deltaTime * 5f);
+
+        // Cálculo do ângulo de rotação em relação à direção suavizada
+        float angle = Mathf.Atan2(smoothDirection.y, smoothDirection.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // Aplica a rotação e movimento
         transform.rotation = rotation;
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        transform.position += smoothDirection * moveSpeed * Time.deltaTime;
+    }
+
+    private Vector3 AvoidOtherEnemies()
+    {
+        Vector3 avoidanceDirection = Vector3.zero;
+        int enemyCount = 0;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Taginimigo");
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null && enemy != this.gameObject)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distance < distMinimaEntreInimigos)
+                {
+                    Vector3 avoidance = transform.position - enemy.transform.position;
+                    avoidanceDirection += avoidance.normalized / distance; // Peso inversamente proporcional à distância
+                    enemyCount++;
+                }
+            }
+        }
+
+        if (enemyCount > 0)
+        {
+            avoidanceDirection /= enemyCount;
+            avoidanceDirection.Normalize();
+            avoidanceDirection *= desvioForca;
+        }
+
+        return avoidanceDirection;
     }
 
     private void OnTriggerEnter(Collider other)

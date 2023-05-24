@@ -160,6 +160,8 @@ MonoBehaviour:
   itemVida: {fileID: 0}
   chanceItemVida: 33.9
   itemvidaprefab: {fileID: 6631204380572736718, guid: 734452c81635e9c4c9e3f6f93392b734, type: 3}
+  distMinimaEntreInimigos: 5
+  desvioForca: 1
 --- !u!114 &4650023587080931423
 MonoBehaviour:
   m_ObjectHideFlags: 0
