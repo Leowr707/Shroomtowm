@@ -18,7 +18,6 @@ public class Nave : MonoBehaviour
     public float xMax;
 
     public Text VidaText;
-    //public CinemachineImpulseSource source;
 
     private IEnumerator vidatxt()
     {       
@@ -249,6 +248,7 @@ public class Nave : MonoBehaviour
 
             proximoTiro = proximoTiro - tiroInicial;
             tiroInicial = 0.0f;
+            AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.tiroJogadorSFX, 0.5f);
             Destroy(tiro, tempoDestruicaoTiro);
         }
     }
@@ -261,6 +261,7 @@ public class Nave : MonoBehaviour
 
         if (Input.GetKey(KeyCode.K) && tiroInicialEspecial > proximoTiroEspecial)
         {
+            
 
             proximoTiroEspecial = tiroInicialEspecial + intervaloTiroEspecial;
 

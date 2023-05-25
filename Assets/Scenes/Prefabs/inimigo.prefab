@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2269981010896177050, guid: dd9a37723bededa4a81e8582e88bc07d, type: 3}
-  moveSpeed: 5
+  moveSpeed: 10
   recompensaPontos: 10
   source: {fileID: 3603808611122818959}
   SomMorte: {fileID: 4650023587804376464}

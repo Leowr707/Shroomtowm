@@ -10,6 +10,7 @@ public class ItemDeCura : MonoBehaviour
 
 {
     public int valorDeCura = 1;
+    
     [SerializeField]public GameObject VidaText;
 
     private IEnumerator vidatxt()
@@ -29,6 +30,9 @@ public class ItemDeCura : MonoBehaviour
             AudioManager.instancia.TocarSomVida();
             vidatxt();      
             Destroy(gameObject);
+        }else
+        {
+            Destroy(gameObject, 10);
         }
     }
 }

@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 95507719}
   - component: {fileID: 95507718}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: Fundo temporario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5677,7 +5677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSound: {fileID: 8300000, guid: cd8e44f8ed52ff947969ea2cbac7f6f4, type: 3}
-  tiroJogadorSFX: {fileID: 0}
+  tiroJogadorSFX: {fileID: 8300000, guid: fdd728ecbd83a794caa9d432e07fdc1e, type: 3}
   tiroInimigoSFX: {fileID: 0}
   explosaoSFX: {fileID: 8300000, guid: 5cebec6fd32497445a0983a6146468ee, type: 3}
   controleVolume: {fileID: 313072351}
@@ -5889,6 +5889,14 @@ PrefabInstance:
       propertyPath: intervaloTiro
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 9200368947734919782, guid: d7cc88f449bde8e4baf864eb2d32cc80, type: 3}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: tiroEspecialprefab
+      value: 
+      objectReference: {fileID: 9200368947734919782, guid: d7cc88f449bde8e4baf864eb2d32cc80, type: 3}
     - target: {fileID: 2104011929012577305, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
       propertyPath: m_Name
       value: Player

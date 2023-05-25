@@ -84,7 +84,7 @@ public class Inimigo : MonoBehaviour
         Vector3 avoidanceDirection = Vector3.zero;
         int enemyCount = 0;
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Taginimigo");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Taginimigo") ;
         foreach (GameObject enemy in enemies)
         {
             if (enemy != null && enemy != this.gameObject)
@@ -148,7 +148,7 @@ public class Inimigo : MonoBehaviour
         else if (other.transform.tag == "tiroEspecialPlayer")
         {
             Destroy(other.gameObject);
-            vida = vida - 2;
+            vida = vida - 3;
 
             // Muda a textura do inimigo para o material de dano quando tomar dano
             meshRenderer.material = materialDano;
@@ -157,10 +157,13 @@ public class Inimigo : MonoBehaviour
 
             if (vida <= 0)
             {
-                // Destrói esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
-                SomMorte.Play();
+                Instantiate(particlePrefab, transform.position, transform.rotation);
+                source.GenerateImpulse();
                 Destroy(this.gameObject);
+                GameManager.instancia.adicionarPontos(recompensaPontos);
+                AudioManager.instancia.TocarSomMorte();
+                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
                 
             }
         }
@@ -182,13 +185,5 @@ public class Inimigo : MonoBehaviour
         }
 
     }
-    /*void OnDestroy()
-    {
-        waveManager.InimigoDestruido();
-    }*/
     
-
-
-
-
 }
