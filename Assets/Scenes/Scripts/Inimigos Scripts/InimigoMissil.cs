@@ -84,6 +84,7 @@ public class InimigoMissil : MonoBehaviour
             if (vida <= 0)
             {
                 // Destr�i esse gameObject quando a vida dele chegar em 0
+                GameManager.instancia.InimigosMissilMortos(1);
                 SoltarItemVida();
                 Destroy(this.gameObject);
                 GameManager.instancia.adicionarPontos(recompensaPontos);

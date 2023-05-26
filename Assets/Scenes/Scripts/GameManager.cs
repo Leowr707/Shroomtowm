@@ -12,6 +12,13 @@ public class GameManager : MonoBehaviour
     public float vidaAtual;
     public float vidaMaxima;
 
+    [Header("Controle de conquistas do jogador")]
+
+    public int inimigosBaseDestruidos = 0;
+    public int inimigosConfusaoDestruidos = 0;
+    public int inimigosShotgunDestruidos = 0;
+    public int inimigosMissilDestruidos = 0;
+
     public static GameManager instancia;
     AudioSource audioSource;
     public Slider controleVolume;
@@ -62,8 +69,27 @@ public class GameManager : MonoBehaviour
         vidaAtual = vidaAtual - dano;
         if(vidaAtual <= 0) {
             GameOver();
-            Debug.Log("funcionando");
         }
+    }
+
+    
+     public void InimigosBaseMortos(int morto) {
+        inimigosBaseDestruidos = inimigosBaseDestruidos + morto;
+    }
+
+    public void InimigosConfusaoMortos(int morto)
+    {
+        inimigosConfusaoDestruidos = inimigosConfusaoDestruidos + morto;
+    }
+
+    public void InimigosShotgunMortos(int morto)
+    {
+        inimigosShotgunDestruidos = inimigosShotgunDestruidos + morto;
+    }
+
+    public void InimigosMissilMortos(int morto)
+    {
+        inimigosMissilDestruidos = inimigosMissilDestruidos + morto;
     }
 
     public void adicionarPontos(int pontos) {
@@ -78,6 +104,8 @@ public class GameManager : MonoBehaviour
         } else { // caso n�o exista nenhuma chave com o nome pontua��o
             // Realizando o armazenamento dos pontos iniciais na chave pontuacao
             PlayerPrefs.SetInt("pontuacao", pontos);
+
+            
         }
 
         // Exibindo a pontua��o salva na interface do usuario

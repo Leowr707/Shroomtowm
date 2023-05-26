@@ -63,20 +63,43 @@ public class Inimigo : MonoBehaviour
         Vector3 playerDirection = Player.position - transform.position;
         playerDirection.Normalize();
 
-        // Aplica o desvio suave para evitar colisões com outros inimigos
-        Vector3 avoidanceDirection = AvoidOtherEnemies();
-        Vector3 desiredDirection = playerDirection + avoidanceDirection;
+        // Calcula a distância atual entre o inimigo e o jogador
+        float currentDistance = Vector3.Distance(transform.position, Player.position);
 
-        // Suaviza a direção desejada usando um algoritmo de interpolação
-        Vector3 smoothDirection = Vector3.Lerp(transform.up, desiredDirection, Time.deltaTime * 5f);
+        // Verifica se a distância atual é menor que a distância mínima desejada
+        if (currentDistance < distMinimaEntreInimigos)
+        {
+            // Calcula a direção oposta à direção para o jogador
+            Vector3 avoidanceDirection = -playerDirection;
 
-        // Cálculo do ângulo de rotação em relação à direção suavizada
-        float angle = Mathf.Atan2(smoothDirection.y, smoothDirection.x) * Mathf.Rad2Deg - 90f;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            // Suaviza a direção de desvio usando um algoritmo de interpolação
+            Vector3 smoothDirection = Vector3.Lerp(transform.up, avoidanceDirection, Time.deltaTime * 5f);
 
-        // Aplica a rotação e movimento
-        transform.rotation = rotation;
-        transform.position += smoothDirection * moveSpeed * Time.deltaTime;
+            // Cálculo do ângulo de rotação em relação à direção suavizada
+            float angle = Mathf.Atan2(smoothDirection.y, smoothDirection.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Aplica a rotação e movimento
+            transform.rotation = rotation;
+            transform.position += smoothDirection * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            // Aplica o desvio suave para evitar colisões com outros inimigos
+            Vector3 avoidanceDirection = AvoidOtherEnemies();
+            Vector3 desiredDirection = playerDirection + avoidanceDirection;
+
+            // Suaviza a direção desejada usando um algoritmo de interpolação
+            Vector3 smoothDirection = Vector3.Lerp(transform.up, desiredDirection, Time.deltaTime * 5f);
+
+            // Cálculo do ângulo de rotação em relação à direção suavizada
+            float angle = Mathf.Atan2(smoothDirection.y, smoothDirection.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Aplica a rotação e movimento
+            transform.rotation = rotation;
+            transform.position += smoothDirection * moveSpeed * Time.deltaTime;
+        }
     }
 
     private Vector3 AvoidOtherEnemies()
@@ -161,6 +184,7 @@ public class Inimigo : MonoBehaviour
                 Instantiate(particlePrefab, transform.position, transform.rotation);
                 source.GenerateImpulse();
                 Destroy(this.gameObject);
+                GameManager.instancia.InimigosBaseMortos(1);
                 GameManager.instancia.adicionarPontos(recompensaPontos);
                 AudioManager.instancia.TocarSomMorte();
                 AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);

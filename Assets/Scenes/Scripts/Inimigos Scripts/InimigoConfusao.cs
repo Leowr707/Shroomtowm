@@ -98,6 +98,7 @@ public class InimigoConfusao : MonoBehaviour
                 // Destroi esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
                 Destroy(this.gameObject);
+                GameManager.instancia.InimigosConfusaoMortos(1);
                 AudioManager.instancia.TocarSomMorte();
                 GameManager.instancia.adicionarPontos(recompensaPontos);
 
