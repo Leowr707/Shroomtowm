@@ -175,3 +175,4 @@ MonoBehaviour:
   prefabTiroInimigo: {fileID: 2811378279378448993, guid: 9ed590c051133534cb28da1ad6df8a41, type: 3}
   spawnPointDoTiroInimigo: {fileID: 8460435951189144543}
   ativarTiro: 1
+  tempoParaDestruicao: 8

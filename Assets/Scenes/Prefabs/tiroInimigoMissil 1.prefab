@@ -28,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2811378279378448993}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -35.99901, y: -19.604519, z: -4.173646}
   m_LocalScale: {x: 1.3529334, y: 0.594696, z: 0.594696}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &2811378279378449002
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18aef6c95e57a24881b5e3aa9863120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forca: 1500
   distanciaMaxima: 30
-  player: {fileID: 2269981010896177050, guid: dd9a37723bededa4a81e8582e88bc07d, type: 3}
+  Player: {fileID: 0}
+  moveSpeed: 12
+  rotationSpeed: 1

@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class TiroMissil : MonoBehaviour
 {
-    public float forca;
-    public float forcaInicial;
     public float distanciaMaxima = 30f;
     public Transform Player;
-
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
-
-    // Start is called before the first frame update
+    public float rotationSpeed = 10f; // velocidade de rotação do inimigo
 
     void Start()
     {
-
         Player = GameObject.FindWithTag("Player").transform;
     }
 
-    private void Update()
+    void Update()
     {
         // Verifica se o objeto do jogador foi definido
         if (Player == null) return;
@@ -30,10 +25,15 @@ public class TiroMissil : MonoBehaviour
 
         // Calculo do angulo de rotacao em relacao ao jogador
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        // Aplica a rotacao e movimento
-        transform.rotation = rotation;
+        // Aplica a rotação e movimento
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         transform.position += direction * moveSpeed * Time.deltaTime;
+    }
+
+    void destruirProjetil()
+    {
+        Destroy(this.gameObject);
     }
 }
