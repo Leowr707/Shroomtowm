@@ -254,7 +254,7 @@ public class Nave : MonoBehaviour
 
             proximoTiro = proximoTiro - tiroInicial;
             tiroInicial = 0.0f;
-            AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.tiroJogadorSFX, 0.5f);
+            AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.tiroJogadorSFX, 0.1f);
             Destroy(tiro, tempoDestruicaoTiro);
         }
     }
