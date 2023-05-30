@@ -11,6 +11,7 @@ TagManager:
   - tiroInimigoConfusao
   - tiroInimigoMissil
   - Taginimigo
+  - Boss
   layers:
   - Default
   - TransparentFX

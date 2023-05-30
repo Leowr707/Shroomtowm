@@ -152,6 +152,12 @@ public class Nave : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.transform.tag == "Boss")
+        {
+
+            GameManager.instancia.RemoverVida(10);
+        }
+
         if (other.transform.tag == "tiroInimigo")
         {
             other.gameObject.SetActive(false);
