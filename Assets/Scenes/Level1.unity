@@ -5103,8 +5103,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08100078, y: 0.046226274, z: 0.010430021}
-  m_Center: {x: -0.000000005587937, y: 0.0025616025, z: -0.00014983164}
+  m_Size: {x: 0.01, y: 0.04, z: 0.08}
+  m_Center: {x: -0.000000005587937, y: 0.008, z: 0.01}
 --- !u!1001 &1754876025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6246,9 +6246,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: materialDano
+      value: 
+      objectReference: {fileID: 2100000, guid: c09d35c7ad9c1df4aa2866dbdfd74f49, type: 2}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
       propertyPath: intervaloTiro
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: materialOriginal
+      value: 
+      objectReference: {fileID: 2100000, guid: fd9f21e9cfd36ed46b75aef500d4a34e, type: 2}
     - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
       propertyPath: projectilePrefab
       value: 
@@ -6367,6 +6375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6459282931865774373, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+    - {fileID: 2104011929012577307, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
 --- !u!1001 &4686692032477235601
 PrefabInstance:
