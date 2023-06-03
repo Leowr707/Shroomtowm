@@ -7,6 +7,7 @@ public class BossAtaque : MonoBehaviour
     [Header("Configuracoes do disparo do inimigo")]
     public float cdTiroInimigo;
     public float distanciaMinimaDeDisparo = 60f;
+    public float tempoEntreAtaques= 0;
     public GameObject prefabTiroInimigo;
     [Header("Tiros padroes retos")]
     public GameObject spawnPointCima, spawnPointDireita, spawnPointBaixo, spawnPointEsquerda;
@@ -46,17 +47,30 @@ public class BossAtaque : MonoBehaviour
             GameObject tiroEsquerda = Instantiate(prefabTiroInimigo, spawnPointEsquerda.transform.position, spawnPointEsquerda.transform.rotation);
             Destroy(tiroEsquerda, 5);
 
-
-            GameObject tiroNordeste = Instantiate(prefabTiroInimigo, spawnPointNordeste.transform.position, spawnPointNordeste.transform.rotation);
-            Destroy(tiroNordeste, 5);
-            GameObject tiroSudeste = Instantiate(prefabTiroInimigo, spawnPointSudeste.transform.position, spawnPointSudeste.transform.rotation);
-            Destroy(tiroSudeste, 5);
-            GameObject tiroSudoeste = Instantiate(prefabTiroInimigo, spawnPointSudoeste.transform.position, spawnPointSudoeste.transform.rotation);
-            Destroy(tiroSudoeste, 5);
-            GameObject tiroNoroeste = Instantiate(prefabTiroInimigo, spawnPointNoroeste.transform.position, spawnPointNoroeste.transform.rotation);
-            Destroy(tiroNoroeste, 5);
+            ataquesDiagonais();
+            //CdEntreAtaques();
+            
         }
+
+         
+}
+
+    void ataquesDiagonais()
+    {
+        GameObject tiroNordeste = Instantiate(prefabTiroInimigo, spawnPointNordeste.transform.position, spawnPointNordeste.transform.rotation);
+        Destroy(tiroNordeste, 5);
+        GameObject tiroSudeste = Instantiate(prefabTiroInimigo, spawnPointSudeste.transform.position, spawnPointSudeste.transform.rotation);
+        Destroy(tiroSudeste, 5);
+        GameObject tiroSudoeste = Instantiate(prefabTiroInimigo, spawnPointSudoeste.transform.position, spawnPointSudoeste.transform.rotation);
+        Destroy(tiroSudoeste, 5);
+        GameObject tiroNoroeste = Instantiate(prefabTiroInimigo, spawnPointNoroeste.transform.position, spawnPointNoroeste.transform.rotation);
+        Destroy(tiroNoroeste, 5);
     }
+/*
+    private IEnumerator CdEntreAtaques()
+    {
+        yield return new WaitForSeconds(tempoEntreAtaques);
 
-
+        ataquesDiagonais();
+    }*/
 }
