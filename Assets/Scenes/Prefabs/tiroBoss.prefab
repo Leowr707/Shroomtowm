@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646950363e87c25448d7de81d657a247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forca: 2000
+  forca: 3000
   source: {fileID: 0}
 --- !u!54 &4339087605490588209
 Rigidbody:
