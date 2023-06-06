@@ -393,6 +393,7 @@ MonoBehaviour:
   cdTiroInimigo: 0.8
   distanciaMinimaDeDisparo: 20
   tempoEntreAtaques: 0
+  tempoAtrasoAtaquesDiagonais: 0.4
   prefabTiroInimigo: {fileID: 4339087605490588367, guid: d34f17c832bd6df4790bfd37f676cc80, type: 3}
   spawnPointCima: {fileID: 4342387812262718930}
   spawnPointDireita: {fileID: 4342387811388183062}
