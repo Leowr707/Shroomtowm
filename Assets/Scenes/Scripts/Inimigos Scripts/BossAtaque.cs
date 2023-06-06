@@ -10,11 +10,15 @@ public class BossAtaque : MonoBehaviour
     public float tempoAtrasoAtaquesDiagonais = 0;
     private bool atirarConfusaoAtivo = true;
     private bool atirarDiagonalAtivo = true;
-    private float tempoAtirarConfusao = 1.5f;
+    private bool atirarMissilAtivo = true;
+    private float tempoAtirarConfusao = 1.0f;
     private float tempoAtirarDiagonal = 1.5f;
+    private float tempoAtirarMissil = 2.5f;
     private float timerAtirarConfusao = 0f;
     private float timerAtirarDiagonal = 0f;
+    private float timerAtirarMissil = 0f;
     public GameObject prefabTiroInimigo;
+    public GameObject prefabTiroInimigoMissil;
     public GameObject prefabTiroInimigoConfusao;
     [Header("Tiros padroes retos")]
     public GameObject spawnPointCima, spawnPointDireita, spawnPointBaixo, spawnPointEsquerda;
@@ -23,6 +27,7 @@ public class BossAtaque : MonoBehaviour
     public bool ativarTiro;
     public bool ativarTiroConfusao = false;
     public bool ativarTiroDiagonal = true;
+    public bool ativarTiroMissil = false;
     public Boss bossScript;
 
     private Transform playerTransform;
@@ -40,47 +45,72 @@ public class BossAtaque : MonoBehaviour
         }
     }
 
-    void Update() {
-
-        if (bossScript.vida <= 80) { 
+    void Update()
+    {
+        if (bossScript.vida <= 80 && bossScript.vida > 60)
+        {
             Debug.Log("Atirar");
-            ativarTiroConfusao =true;
-            ativarTiroDiagonal=false;
-            
+            ativarTiroConfusao = true;
+            ativarTiroDiagonal = false;
         }
-        if(ativarTiroConfusao == true)
+
+        if (bossScript.vida <= 60 && bossScript.vida > 40)
+        {
+            Debug.Log("Fase 2");
+            ativarTiroMissil = true;
+
+        }
+
+        if (ativarTiroConfusao)
         {
             if (atirarConfusaoAtivo)
-        {
-            timerAtirarConfusao += Time.deltaTime;
-
-            if (timerAtirarConfusao >= tempoAtirarConfusao)
             {
-                atirarConfusao();
-                timerAtirarConfusao = 0f;
-        }
+                timerAtirarConfusao += Time.deltaTime;
+
+                if (timerAtirarConfusao >= tempoAtirarConfusao)
+                {
+                    atirarConfusao();
+                    timerAtirarConfusao = 0f;
+                }
             }
         }
 
-        /* if (ativarTiroDiagonal == true)
-         {
-             if (atirarDiagonalAtivo)
-             {
-                 timerAtirarDiagonal += Time.deltaTime;
+        if (ativarTiroDiagonal)
+        {
+            if (atirarDiagonalAtivo)
+            {
+                timerAtirarDiagonal += Time.deltaTime;
 
-                 if (timerAtirarDiagonal >= tempoAtirarDiagonal)
-                 {
-                     atirarConfusao();
-                     timerAtirarDiagonal = 0f;
-                 }
-             }
-         }*/
+                if (timerAtirarDiagonal >= tempoAtirarDiagonal)
+                {
+                    StartCoroutine(ExecutarAtaquesDiagonais());
+                    timerAtirarDiagonal = 0f;
+                }
+            }
+        }
+
+        //quebra
+
+        if (ativarTiroMissil)
+        {
+            if (atirarMissilAtivo)
+            {
+                timerAtirarMissil += Time.deltaTime;
+
+                if (timerAtirarMissil >= tempoAtirarMissil)
+                {
+                    StartCoroutine(atirarMissil());
+                    timerAtirarMissil = 0f;
+                }
+            }
+        }
     }
 
 
 
     void atirarConfusao() {
 
+        
         GameObject tiroNordeste = Instantiate(prefabTiroInimigoConfusao, spawnPointNordeste.transform.position, spawnPointNordeste.transform.rotation);
         Destroy(tiroNordeste, 5);
         GameObject tiroSudeste = Instantiate(prefabTiroInimigoConfusao, spawnPointSudeste.transform.position, spawnPointSudeste.transform.rotation);
@@ -91,6 +121,16 @@ public class BossAtaque : MonoBehaviour
         Destroy(tiroNoroeste, 5);
 
 
+    }
+
+    IEnumerator atirarMissil()
+    {
+        GameObject tiroNordeste = Instantiate(prefabTiroInimigoMissil, spawnPointNordeste.transform.position, spawnPointNordeste.transform.rotation);
+        Destroy(tiroNordeste, 5);
+        GameObject tiroSudeste = Instantiate(prefabTiroInimigoMissil, spawnPointSudeste.transform.position, spawnPointSudeste.transform.rotation);
+        Destroy(tiroSudeste, 5);
+
+        yield return null;
     }
 
     void Atirar()
@@ -111,7 +151,7 @@ public class BossAtaque : MonoBehaviour
 
     }
     }
-    /* IEnumerator ExecutarAtaquesDiagonais()
+     IEnumerator ExecutarAtaquesDiagonais()
      {
          yield return new WaitForSeconds(tempoAtrasoAtaquesDiagonais);
          ataquesDiagonais();
@@ -127,6 +167,6 @@ public class BossAtaque : MonoBehaviour
          Destroy(tiroSudoeste, 5);
          GameObject tiroNoroeste = Instantiate(prefabTiroInimigo, spawnPointNoroeste.transform.position, spawnPointNoroeste.transform.rotation);
          Destroy(tiroNoroeste, 5);
-     }*/
+     }
 
 }
