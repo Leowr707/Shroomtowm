@@ -44,20 +44,19 @@ public class BossAtaque : MonoBehaviour
 
         }
     }
-
+    bool fase2Executada = false;
+    bool fase1Executada = false;
     void Update()
     {
-        if (bossScript.vida <= 80 && bossScript.vida > 60)
-        {
-            Debug.Log("Atirar");
-            ativarTiroConfusao = true;
-            ativarTiroDiagonal = false;
+        if (bossScript.vida <= 80 && bossScript.vida > 60 && !fase1Executada)
+        { 
+            ExecutarFase1(); 
         }
 
-        if (bossScript.vida <= 60 && bossScript.vida > 40)
+
+        if (bossScript.vida <= 60 && bossScript.vida > 40 && !fase2Executada)
         {
-            Debug.Log("Fase 2");
-            ativarTiroMissil = true;
+            ExecutarFase2();
 
         }
 
@@ -106,7 +105,21 @@ public class BossAtaque : MonoBehaviour
         }
     }
 
+    public void ExecutarFase1()
+    {
 
+            Debug.Log("Atirar");
+            ativarTiroConfusao = true;
+            ativarTiroDiagonal = false;
+            fase1Executada = true;
+            
+    }
+
+    public void ExecutarFase2()
+    {
+        Debug.Log("Fase 2");
+        ativarTiroMissil = true;
+    }
 
     void atirarConfusao() {
 
