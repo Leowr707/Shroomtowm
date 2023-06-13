@@ -55,6 +55,11 @@ public class Nave : MonoBehaviour
     [Header("Configuracoes de tipo e spawn")]
     public GameObject projetil; //onde coloca o projetil
     public Transform spawnPoint; //onde o tiro vai spawnar
+    public Transform spawnPointMeioBaixo; //onde o tiro vai spawnar
+    public Transform spawnPointBaixo; //onde o tiro vai spawnar
+    public Transform spawnPointMeioCima; //onde o tiro vai spawnar
+    public Transform spawnPointCima; //onde o tiro vai spawnar
+
     public GameObject tiroEspecial;
 
     [Header("Configuracoes do tiro normal")]
@@ -275,6 +280,10 @@ public class Nave : MonoBehaviour
             // spawnPoint.position -> Representa o ponto onde o projetil vai ser criado
             // spawnPoint.rotation -> Rotacao que o projetil criado vai possuir
             GameObject TiroEspecial = Instantiate(tiroEspecial, spawnPoint.position, spawnPoint.transform.rotation);
+            GameObject TiroEspecialMeioCima = Instantiate(tiroEspecial, spawnPointMeioCima.position, spawnPointMeioCima.transform.rotation);
+            GameObject TiroEspecialMeioBaixo = Instantiate(tiroEspecial, spawnPointMeioBaixo.position, spawnPointMeioBaixo.transform.rotation);
+            GameObject TiroEspecialCima = Instantiate(tiroEspecial, spawnPointCima.position, spawnPointCima.transform.rotation);
+            GameObject TiroEspecialBaixo = Instantiate(tiroEspecial, spawnPointBaixo.position, spawnPointBaixo.transform.rotation);
 
             proximoTiroEspecial = proximoTiroEspecial - tiroInicialEspecial;
             tiroInicialEspecial = 0.0f;

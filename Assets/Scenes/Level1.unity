@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1333,6 +1333,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414940494}
   m_CullTransparentMesh: 1
+--- !u!1 &425736478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425736479}
+  m_Layer: 0
+  m_Name: spawnPointAtaquePlayerBaixo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &425736479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425736478}
+  m_LocalRotation: {x: -0.27059805, y: 0.6532815, z: 0.27059805, w: 0.6532815}
+  m_LocalPosition: {x: 0.0056, y: 0.0378, z: 0.0064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672882790}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -45, y: 90, z: 0}
 --- !u!1 &439891711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,6 +3331,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1092526055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092526056}
+  m_Layer: 0
+  m_Name: spawnPointAtaquePlayerMeioCima
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1092526056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092526055}
+  m_LocalRotation: {x: -0.3928474, y: -0.58793783, z: -0.3928474, w: 0.58793783}
+  m_LocalPosition: {x: 0.0056, y: 0.0378, z: 0.0064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672882790}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -67.5, y: -90, z: 0}
 --- !u!1 &1126744650
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,6 +3752,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f9cf84a52d97244be54e0cbb888983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1221666936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1221666937}
+  m_Layer: 0
+  m_Name: spawnPointAtaquePlayerCima
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1221666937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221666936}
+  m_LocalRotation: {x: -0.27059805, y: -0.6532815, z: -0.27059805, w: 0.6532815}
+  m_LocalPosition: {x: 0.0056, y: 0.0378, z: 0.0064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672882790}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -45, y: -90, z: 0}
 --- !u!1 &1297990009
 GameObject:
   m_ObjectHideFlags: 0
@@ -5323,6 +5416,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eda654538c1c7c45a3ce69977ff933f, type: 3}
+--- !u!1 &1708694173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1708694174}
+  m_Layer: 0
+  m_Name: spawnPointAtaquePlayerMeioBaixo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1708694174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708694173}
+  m_LocalRotation: {x: -0.3928474, y: 0.58793783, z: 0.3928474, w: 0.58793783}
+  m_LocalPosition: {x: 0.0056, y: 0.0378, z: 0.0064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672882790}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -67.5, y: 90, z: 0}
 --- !u!1001 &1754876025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6531,6 +6655,14 @@ PrefabInstance:
       value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: spawnPointCima
+      value: 
+      objectReference: {fileID: 1221666937}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: spawnPointBaixo
+      value: 
+      objectReference: {fileID: 425736479}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
       propertyPath: materialOriginal
       value: 
       objectReference: {fileID: 2100000, guid: fd9f21e9cfd36ed46b75aef500d4a34e, type: 2}
@@ -6539,9 +6671,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9200368947734919782, guid: d7cc88f449bde8e4baf864eb2d32cc80, type: 3}
     - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: spawnPointMeioCima
+      value: 
+      objectReference: {fileID: 1092526056}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
       propertyPath: tiroEspecialprefab
       value: 
       objectReference: {fileID: 9200368947734919782, guid: d7cc88f449bde8e4baf864eb2d32cc80, type: 3}
+    - target: {fileID: 2104011929012577299, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
+      propertyPath: spawnPointMeioBaixo
+      value: 
+      objectReference: {fileID: 1708694174}
     - target: {fileID: 2104011929012577305, guid: a78bab84a376b064bb2bddb56f8aa155, type: 3}
       propertyPath: m_Name
       value: Player
