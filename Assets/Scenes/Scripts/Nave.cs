@@ -87,6 +87,7 @@ public class Nave : MonoBehaviour
     {
         Atirar();
         AtirarEspecial();
+        vidaInfinita();
 
         if (confuso == false) { 
         float horizontal = Input.GetAxis("Horizontal"); // recebe a entrada dos botoes A e D
@@ -238,6 +239,16 @@ public class Nave : MonoBehaviour
         confuso = false;
     }
 
+    void vidaInfinita()
+    {
+        if (Input.GetKey(KeyCode.F3))
+        {
+            GameManager.instancia.vidaMaxima = 9999;
+            GameManager.instancia.vidaAtual = 9999;
+            Debug.Log("HP infinito ativado");
+        }
+    }
+    
 
     void Atirar()
     {
