@@ -9,8 +9,6 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instancia;
 
-    [SerializeField] AudioMixer Mixer;
-
     [Header("Configura��es de Sons")]
     public AudioClip bgmSound;
     public AudioClip tiroJogadorSFX;
@@ -21,10 +19,7 @@ public class AudioManager : MonoBehaviour
     
     public AudioClip powerUpSFX;
     public AudioClip VidaSFX;
-    public AudioSource audioSource;
-
-    public const string MUSIC_KEY = "MusicBgd";
-    public const string SONS_KEY = "MusicSons";
+    
 
 
     private void Awake()
@@ -41,12 +36,12 @@ public class AudioManager : MonoBehaviour
             // Se já existir uma instância, destrói este objeto para evitar duplicatas
             Destroy(gameObject);
         }
-        LoadVolume();
+        //LoadVolume();
     }
 
     private void Start()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();
+        //audioSource = gameObject.GetComponent<AudioSource>();
         //audioSource.PlayOneShot(bgmSound, 0.7f);
     }
 
@@ -70,14 +65,14 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    void LoadVolume()
-    {
-        float MusicBgd = PlayerPrefs.GetFloat(MUSIC_KEY, 1F);
-        float MusicSons= PlayerPrefs.GetFloat(SONS_KEY, 1F);
+    //void LoadVolume()
+   // {
+      //  float MusicBgd = PlayerPrefs.GetFloat(MUSIC_KEY, 1F);
+      //  float MusicSons= PlayerPrefs.GetFloat(SONS_KEY, 1F);
         
-        Mixer.SetFloat(AudioSettings.MIXER_MUSIC, Mathf.Log10(MusicBgd)* 20);
-        Mixer.SetFloat(AudioSettings.MIXER_SONS, Mathf.Log10(MusicSons)* 20);
-    }
+       // Mixer.SetFloat(AudioSettings.MIXER_MUSIC, Mathf.Log10(MusicBgd)* 20);
+      //  Mixer.SetFloat(AudioSettings.MIXER_SONS, Mathf.Log10(MusicSons)* 20);
+   // }
 
 
 
