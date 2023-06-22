@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -851,8 +851,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: e382cb37329ab2a4e8506d291362930d, type: 2}
-  MusicaSlider: {fileID: 313072351}
-  SonsSlider: {fileID: 0}
+  SFXSlider: {fileID: 0}
+  MusicSlider: {fileID: 313072351}
 --- !u!82 &233437119
 AudioSource:
   m_ObjectHideFlags: 0
@@ -862,12 +862,12 @@ AudioSource:
   m_GameObject: {fileID: 233437117}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 7242349188777135578, guid: e382cb37329ab2a4e8506d291362930d, type: 2}
+  OutputAudioMixerGroup: {fileID: 5841328608416058964, guid: e382cb37329ab2a4e8506d291362930d, type: 2}
   m_audioClip: {fileID: 8300000, guid: cd8e44f8ed52ff947969ea2cbac7f6f4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1210,9 +1210,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1993810259}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: MudarVolume
+      - m_Target: {fileID: 1993810260}
+        m_TargetAssemblyTypeName: AudioSettings, Assembly-CSharp
+        m_MethodName: SetMusicSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4019,13 +4019,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1993810259}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: MudarSons
-        m_Mode: 2
+      - m_Target: {fileID: 1993810260}
+        m_TargetAssemblyTypeName: AudioSettings, Assembly-CSharp
+        m_MethodName: SetMusicSFX
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1297990011}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6446,7 +6446,7 @@ AudioSource:
   m_GameObject: {fileID: 1993810256}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6938268259846380137, guid: e382cb37329ab2a4e8506d291362930d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -6545,16 +6545,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f8101fc2b8c4a4a90ee30db08fb39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 24100000, guid: e382cb37329ab2a4e8506d291362930d, type: 2}
   bgmSound: {fileID: 0}
   tiroJogadorSFX: {fileID: 8300000, guid: fdd728ecbd83a794caa9d432e07fdc1e, type: 3}
   tiroInimigoSFX: {fileID: 0}
   explosaoSFX: {fileID: 8300000, guid: 5cebec6fd32497445a0983a6146468ee, type: 3}
   controleVolume: {fileID: 0}
-  controleSons: {fileID: 1297990011}
+  controleSons: {fileID: 0}
   powerUpSFX: {fileID: 0}
   VidaSFX: {fileID: 8300000, guid: 70912af9eb3ca6141bb4beb05a3d5778, type: 3}
-  audioSource: {fileID: 1993810258}
 --- !u!114 &1993810260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6568,8 +6566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: e382cb37329ab2a4e8506d291362930d, type: 2}
-  MusicaSlider: {fileID: 313072351}
-  SonsSlider: {fileID: 1297990011}
+  SFXSlider: {fileID: 1297990011}
+  MusicSlider: {fileID: 313072351}
 --- !u!4 &2066477024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6eda654538c1c7c45a3ce69977ff933f, type: 3}
