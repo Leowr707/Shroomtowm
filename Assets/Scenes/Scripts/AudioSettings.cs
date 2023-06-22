@@ -1,4 +1,4 @@
-
+using System;
 using UnityEngine; 
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -13,12 +13,14 @@ public class AudioSettings : MonoBehaviour
     {
         float volume = SFXSlider.value;
         mixer.SetFloat("SFX", Mathf.Log10(volume)* 20);
+        SFXSlider.value = volume;
     }
 
     public void SetMusic()
     {
         float volume = MusicSlider.value;
         mixer.SetFloat("Music", Mathf.Log10(volume)* 20);
+        MusicSlider.value = volume;
     }
 
     //public const string MIXER_SFX = "SFX";
