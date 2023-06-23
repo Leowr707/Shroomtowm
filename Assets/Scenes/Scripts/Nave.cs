@@ -185,7 +185,7 @@ public class Nave : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
-            GameManager.instancia.RemoverVida(1);
+            GameManager.instancia.RemoverVida(2);
 
             if (confuso == false)
             {

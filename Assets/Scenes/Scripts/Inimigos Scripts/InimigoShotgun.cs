@@ -41,6 +41,10 @@ public class InimigoShotgun : MonoBehaviour
     private float chanceItemVida;
     [SerializeField] private ItemDeCura itemvidaprefab;
 
+    [Header("Configurações de distância entre inimigos")]
+    public float distMinimaEntreInimigos = 2f; // Distância mínima desejada entre os inimigos
+    public float desvioForca = 1f; // Força do desvio aplicado para evitar colisões
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,22 +60,82 @@ public class InimigoShotgun : MonoBehaviour
         // Verifica se o objeto do jogador foi definido
         if (Player == null) return;
 
-        // C�lculo da dire��o para o jogador
-        Vector3 direction = Player.position - transform.position;
-        direction.Normalize();
+        // Cálculo da direção para o jogador
+        Vector3 playerDirection = Player.position - transform.position;
+        playerDirection.Normalize();
 
-        // C�lculo do �ngulo de rota��o em rela��o ao jogador
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Calcula a distância atual entre o inimigo e o jogador
+        float currentDistance = Vector3.Distance(transform.position, Player.position);
 
-        // Aplica a rota��o e movimento
-        transform.rotation = rotation;
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        // Verifica se a distância atual é menor que a distância mínima desejada
+        if (currentDistance < distMinimaEntreInimigos)
+        {
+            // Calcula a direção oposta à direção para o jogador
+            Vector3 avoidanceDirection = -playerDirection;
+
+            // Suaviza a direção de desvio usando um algoritmo de interpolação
+            Vector3 smoothDirection = Vector3.Lerp(transform.up, avoidanceDirection, Time.deltaTime * 5f);
+
+            // Cálculo do ângulo de rotação em relação à direção suavizada
+            float angle = Mathf.Atan2(smoothDirection.y, smoothDirection.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Aplica a rotação e movimento
+            transform.rotation = rotation;
+            transform.position += smoothDirection * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            // Aplica o desvio suave para evitar colisões com outros inimigos
+            Vector3 avoidanceDirection = AvoidOtherEnemies();
+            Vector3 desiredDirection = playerDirection + avoidanceDirection;
+
+            // Suaviza a direção desejada usando um algoritmo de interpolação
+            Vector3 smoothDirection = Vector3.Lerp(transform.up, desiredDirection, Time.deltaTime * 5f);
+
+            // Cálculo do ângulo de rotação em relação à direção suavizada
+            float angle = Mathf.Atan2(smoothDirection.y, smoothDirection.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Aplica a rotação e movimento
+            transform.rotation = rotation;
+            transform.position += smoothDirection * moveSpeed * Time.deltaTime;
+        }
+    }
+
+    private Vector3 AvoidOtherEnemies()
+    {
+        Vector3 avoidanceDirection = Vector3.zero;
+        int enemyCount = 0;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Taginimigo");
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null && enemy != this.gameObject)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distance < distMinimaEntreInimigos)
+                {
+                    Vector3 avoidance = transform.position - enemy.transform.position;
+                    avoidanceDirection += avoidance.normalized / distance; // Peso inversamente proporcional à distância
+                    enemyCount++;
+                }
+            }
+        }
+
+        if (enemyCount > 0)
+        {
+            avoidanceDirection /= enemyCount;
+            avoidanceDirection.Normalize();
+            avoidanceDirection *= desvioForca;
+        }
+
+        return avoidanceDirection;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "tiroPlayer" /*|| other.transform.tag == "Player"*/)
+        if (other.transform.tag == "tiroPlayer" || other.transform.tag == "Player" )
         {
             Destroy(other.gameObject);
             vida = vida - 1;
@@ -90,7 +154,7 @@ public class InimigoShotgun : MonoBehaviour
                 AudioManager.instancia.TocarSomMorte();
                 AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
 
-               
+
             }
             if (other.CompareTag("Player"))
 
@@ -143,11 +207,11 @@ public class InimigoShotgun : MonoBehaviour
     }
 
     void OnDestroy()
-{
-    if (OnEnemyKilled != null)
     {
-        OnEnemyKilled();
+        if (OnEnemyKilled != null)
+        {
+            OnEnemyKilled();
+        }
     }
-}
 
 }

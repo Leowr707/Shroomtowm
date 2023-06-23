@@ -31,9 +31,17 @@ public class TiroMissil : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
-
-    void destruirProjetil()
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
+        if (other.transform.tag == "tiroPlayer" || other.transform.tag == "Player")
+        {
+            destruirProjetil();
+        }
+
+
+        void destruirProjetil()
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

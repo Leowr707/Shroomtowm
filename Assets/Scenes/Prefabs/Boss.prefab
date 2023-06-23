@@ -523,7 +523,7 @@ MonoBehaviour:
   distanciaMinimaDeDisparo: 40
   tempoAtrasoAtaquesDiagonais: 0.4
   prefabTiroInimigo: {fileID: 4339087605490588367, guid: d34f17c832bd6df4790bfd37f676cc80, type: 3}
-  prefabTiroInimigoMissil: {fileID: 8759386417991194727, guid: 2c2e774914b452d4eae3707057182330, type: 3}
+  prefabTiroInimigoMissil: {fileID: 7834225342187921458, guid: 65022a1f3d0631842adf7bea515d6700, type: 3}
   prefabTiroInimigoConfusao: {fileID: 8919949098707716681, guid: 7fa369b5a2a6aeb45a0615e48f084f3f, type: 3}
   spawnPointCima: {fileID: 4342387812262718930}
   spawnPointDireita: {fileID: 4342387811388183062}

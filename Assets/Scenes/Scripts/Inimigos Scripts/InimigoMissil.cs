@@ -16,7 +16,7 @@ public class InimigoMissil : MonoBehaviour
     public WaveManager waveManager;// script que faz parte do WaveManager
     public GameObject MorteFx;
     public delegate void EnemyKilled();
-    public static event EnemyKilled OnEnemyKilled;  
+    public static event EnemyKilled OnEnemyKilled;
 
     [SerializeField] private AudioSource SomMorte;
 
@@ -71,7 +71,7 @@ public class InimigoMissil : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "tiroPlayer" /*|| other.transform.tag == "Player"*/)
+        if (other.transform.tag == "tiroPlayer" || other.transform.tag == "Player")
         {
             Destroy(other.gameObject);
             vida = vida - 1;
@@ -91,7 +91,7 @@ public class InimigoMissil : MonoBehaviour
                 AudioManager.instancia.TocarSomMorte();
                 AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
 
-               
+
             }
 
 
@@ -144,11 +144,11 @@ public class InimigoMissil : MonoBehaviour
     }
 
     void OnDestroy()
-{
-    if (OnEnemyKilled != null)
     {
-        OnEnemyKilled();
+        if (OnEnemyKilled != null)
+        {
+            OnEnemyKilled();
+        }
     }
-}
 
 }

@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 4584675420167289054}
   - component: {fileID: 6779619640764486170}
   m_Layer: 0
-  m_Name: missil
+  m_Name: missil boss
   m_TagString: tiroInimigoMissil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,7 +556,7 @@ Transform:
   m_GameObject: {fileID: 7834225342187921458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -650.7178, y: 28.340206, z: 1099.1884}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3776788159725267985}
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanciaMaxima: 30
   Player: {fileID: 0}
-  moveSpeed: 15
+  moveSpeed: 11
   rotationSpeed: 7
 --- !u!65 &6779619640764486170
 BoxCollider:
