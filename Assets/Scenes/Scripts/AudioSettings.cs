@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class AudioSettings : MonoBehaviour
 {
-    [SerializeField] AudioMixer mixer;
+    public AudioMixer mixer;
     [SerializeField] Slider SFXSlider;
     [SerializeField] Slider MusicSlider;
-
+    public static AudioSettings instancia;
+    
+    void Awake() {
+        if (instancia == null) {
+            instancia = this;
+        }
+    }
+     
     public void SetMusicSFX()
     {
         float volume = SFXSlider.value;
@@ -22,27 +29,5 @@ public class AudioSettings : MonoBehaviour
         mixer.SetFloat("Music", Mathf.Log10(volume)* 20);
         MusicSlider.value = volume;
     }
-
-    //public const string MIXER_SFX = "SFX";
-    //public const string MIXER_SONS = "MusicSons";
-
-
-    /*void Awake() 
-    {
-        MusicaSlider.onValueChanged.AddListener(SetMusicBgd);
-        SonsSlider.onValueChanged.AddListener(SetMusicSons);
-    }
-
-    void SetMusicBgd(float Value)
-    {
-        mixer.SetFloat(MIXER_MUSIC, Mathf.Log10(Value)* 20);
-    }
-
-    void SetMusicSons(float Value)
-    {
-        mixer.SetFloat(MIXER_SONS, Mathf.Log10(Value)* 20);
-    }*/
-
-
-
+    
 }

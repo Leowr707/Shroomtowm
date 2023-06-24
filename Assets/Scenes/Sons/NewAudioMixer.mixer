@@ -128,7 +128,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Jogo
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: d0deede3c2c8a2549b58f63ca31e7c7a
   m_Children: []
