@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using Cinemachine;
 
 public class InimigoConfusao : MonoBehaviour
 {
@@ -9,6 +12,9 @@ public class InimigoConfusao : MonoBehaviour
     public Transform Player; // refer�ncia para o objeto do jogador
     public float moveSpeed = 5f; // velocidade de movimento do inimigo
     public int recompensaPontos; // pontos que o jogador recebe por matar este inimigo
+    [SerializeField] private AudioSource SomMorte;
+    public CinemachineImpulseSource source;
+    public GameObject particlePrefab;
     
     [Header("Configuracoes basicas do inimigo")]
     public int vida = 3;
@@ -37,7 +43,8 @@ public class InimigoConfusao : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.FindWithTag("Player").transform;
+        SomMorte = GameObject.Find("MorteInimigo").GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         materialOriginal = meshRenderer.material;
     }
@@ -98,9 +105,12 @@ public class InimigoConfusao : MonoBehaviour
                 // Destroi esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
                 Destroy(this.gameObject);
-                GameManager.instancia.InimigosConfusaoMortos(1);
+                source.GenerateImpulse();
+                Instantiate(particlePrefab, transform.position, transform.rotation);
+                //GameManager.instancia.InimigosConfusaoMortos(1);
                 AudioManager.instancia.TocarSomMorte();
                 GameManager.instancia.adicionarPontos(recompensaPontos);
+                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
 
 
             }
@@ -125,8 +135,12 @@ public class InimigoConfusao : MonoBehaviour
             {
                 // Destr�i esse gameObject quando a vida dele chegar em 0
                 SoltarItemVida();
-                
                 Destroy(this.gameObject);
+                //GameManager.instancia.InimigosConfusaoMortos(1);
+                Instantiate(particlePrefab, transform.position, transform.rotation);
+                AudioManager.instancia.TocarSomMorte();
+                GameManager.instancia.adicionarPontos(recompensaPontos);
+                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
 
             }
         }

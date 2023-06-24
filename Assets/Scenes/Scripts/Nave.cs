@@ -11,11 +11,11 @@ public class Nave : MonoBehaviour
     public float moveSpeed = 5f; // velocidade de movimento da nave
     public float rotateSpeed = 100f; // velocidade de rota��o da nave
     public float maxSpeed = 20f; // velocidade m�xima da nave
-    public float impulseForce = 10f; // for�a de impulso aplicada � nave
-    public float yMin;
-    public float yMax;
-    public float xMin;
-    public float xMax;
+    public float impulseForce = 15f; // for�a de impulso aplicada � nave
+    //public float yMin;
+    //public float yMax;
+   // public float xMin;
+    //public float xMax;
 
     public Text VidaText;
 
@@ -92,11 +92,11 @@ public class Nave : MonoBehaviour
         if (confuso == false) { 
         float horizontal = Input.GetAxis("Horizontal"); // recebe a entrada dos botoes A e D
         float vertical = Input.GetAxis("Vertical"); // recebe a entrada do botao W
-        rb.position = new Vector3(
-            Mathf.Clamp(rb.position.x, xMin, xMax),
-            Mathf.Clamp(rb.position.y, yMin, yMax),
-            0
-            );
+        //rb.position = new Vector3(
+           // Mathf.Clamp(rb.position.x, xMin, xMax),
+            //Mathf.Clamp(rb.position.y, yMin, yMax),
+            //0
+           // );
         
         // gira a nave em torno do eixo Z baseado na entrada horizontal
         transform.Rotate(0f, 0f, -horizontal * rotateSpeed * Time.deltaTime);
