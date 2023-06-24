@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 8096}
   vertical: 0
-  controlID: 19
+  controlID: 59
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1081
     y: 0
-    width: 182
+    width: 259
     height: 939
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -191,9 +191,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1263
+    x: 1340
     y: 0
-    width: 360
+    width: 283
     height: 939
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
@@ -251,7 +251,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1263
     y: 73
-    width: 320
+    width: 358
     height: 918
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -259,7 +259,7 @@ MonoBehaviour:
     m_SaveData: []
   m_MixersTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b47d0000
+    m_SelectedIDs: 
     m_LastClickedID: 32180
     m_ExpandedIDs: 12eb343c
     m_RenameOverlay:
@@ -376,12 +376,12 @@ MonoBehaviour:
       oldMaxSizes: 
       oldSplitSize: 0
     m_HorizontalSplitter:
-      ID: 5007
+      ID: 670
       splitterInitialOffset: 159
       currentActiveSplitter: -1
       realSizes:
-      - 160
-      - 160
+      - 163
+      - 195
       relativeSizes:
       - 0.45454547
       - 0.5454545
@@ -391,7 +391,7 @@ MonoBehaviour:
       maxSizes:
       - 0
       - 0
-      lastTotalSize: 320
+      lastTotalSize: 358
       splitSize: 6
       xOffset: 0
       m_Version: 1
@@ -427,7 +427,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1081
     y: 73
-    width: 180
+    width: 257
     height: 918
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -435,10 +435,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: d2fffcff6613fdffb81dfdff8020fdff6c23fdfff465fdffc8b6fdffe0d7fdff221dfeff5aecffffdcf7ffffc0faffffbc2c03002a2d0300c82e0300f22d0500bc310500826505004c690500
+      scrollPos: {x: 0, y: 1135}
+      m_SelectedIDs: ec64ffff
+      m_LastClickedID: -39700
+      m_ExpandedIDs: e464fffface6ffff06fbffffd27800001e790000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -744,7 +744,7 @@ MonoBehaviour:
       index: 13
       layout: 4
   m_WindowGUID: 83f8f9a5c27a6e3428211a2fa51cd491
-  m_Gizmos: 1
+  m_Gizmos: 0
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
@@ -753,9 +753,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -143.4159, y: 100.91914, z: 311.37878}
+    m_Target: {x: -409.36124, y: -195.71869, z: 3282.999}
     speed: 2
-    m_Value: {x: -143.4159, y: 100.91914, z: 311.37878}
+    m_Value: {x: -409.36124, y: -195.71869, z: 3282.999}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -802,13 +802,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.10121946, y: -0.0059708357, z: 0.00061192486, w: 0.99482536}
+    m_Target: {x: 0.09067794, y: -0.0448008, z: 0.004090002, w: 0.99484444}
     speed: 2
-    m_Value: {x: 0.10122154, y: -0.0059709586, z: 0.00061193743, w: 0.9948458}
+    m_Value: {x: 0.09217187, y: -0.044795472, z: 0.004157273, w: 0.9947263}
   m_Size:
-    m_Target: 594.6968
+    m_Target: 2788.0737
     speed: 2
-    m_Value: 569.0878
+    m_Value: 2788.0737
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -826,7 +826,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.05276103, y: 0.030549964, z: -0.0016182549, w: -0.99815154}
+  m_LastSceneViewRotation: {x: 0.10121946, y: -0.0059708357, z: 0.00061192486, w: 0.99482536}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -2584,9 +2584,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1263
+    x: 1340
     y: 73
-    width: 358
+    width: 281
     height: 918
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -2605,22 +2605,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Prefabs
+    - Assets/Scenes/Modelos/modelos importados/materiais
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Prefabs
+  - Assets/Scenes/Modelos/modelos importados/materiais
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Administrator\TI2\Shroomtowm
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c6860000
-    m_LastClickedID: 34502
-    m_ExpandedIDs: 000000001c8500001e8500002085000022850000c2860000c686000000ca9a3b
+    m_SelectedIDs: 52880000
+    m_LastClickedID: 34898
+    m_ExpandedIDs: 0000000076850000788500007a8500007c8500007e8500003687000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2648,7 +2648,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001c8500001e8500002085000022850000
+    m_ExpandedIDs: 0000000076850000788500007a8500007c8500007e850000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2675,7 +2675,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: de84000000000000faa6ffff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2700,7 +2700,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 452}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 168
