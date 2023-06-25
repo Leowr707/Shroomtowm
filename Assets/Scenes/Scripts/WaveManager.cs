@@ -47,7 +47,6 @@ public class WaveManager : MonoBehaviour
     {
         int randomIndex = Random.Range(0, BossPrefabs.Length);
         GameObject SpawnBoss = Instantiate(BossPrefabs[randomIndex], GetRandomSpawnPoint(), Quaternion.identity); // Spawn do boss na terceira wave
-        waveText.text = "BOSS SPAWNED";
         waveText.gameObject.SetActive(true);
         yield return new WaitForSeconds(5f);
         waveText.gameObject.SetActive(false);
