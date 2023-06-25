@@ -15,12 +15,17 @@ public class AudioSettings : MonoBehaviour
             instancia = this;
         }
     }
+    void Start()
+    {
+        
+    }
      
     public void SetMusicSFX()
     {
         float volume = SFXSlider.value;
         mixer.SetFloat("SFX", Mathf.Log10(volume)* 20);
         SFXSlider.value = volume;
+        
     }
 
     public void SetMusic()
@@ -28,6 +33,7 @@ public class AudioSettings : MonoBehaviour
         float volume = MusicSlider.value;
         mixer.SetFloat("Music", Mathf.Log10(volume)* 20);
         MusicSlider.value = volume;
+        
     }
     
 }

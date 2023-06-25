@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1822,9 +1822,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c78641940d1c02439bd7cfb9f8f59c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: e382cb37329ab2a4e8506d291362930d, type: 2}
+  mixer: {fileID: 0}
   SFXSlider: {fileID: 0}
-  MusicSlider: {fileID: 313072351}
+  MusicSlider: {fileID: 0}
 --- !u!82 &233437119
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14099,7 +14099,8 @@ PrefabInstance:
       propertyPath: AudioSetting
       value: 
       objectReference: {fileID: 1993810256}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1929417012955469052, guid: 70c5637203452f84b9ea14bb54d0ce5b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70c5637203452f84b9ea14bb54d0ce5b, type: 3}
 --- !u!1001 &2104011929487707768
 PrefabInstance:
@@ -14522,8 +14523,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1297990011}
     - target: {fileID: 9116666080852872359, guid: 773c3e26e46ecb6488b496ae42e4c186, type: 3}
+      propertyPath: bgmSlider
+      value: 
+      objectReference: {fileID: 313072351}
+    - target: {fileID: 9116666080852872359, guid: 773c3e26e46ecb6488b496ae42e4c186, type: 3}
+      propertyPath: sfxSlider
+      value: 
+      objectReference: {fileID: 1297990011}
+    - target: {fileID: 9116666080852872359, guid: 773c3e26e46ecb6488b496ae42e4c186, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: e382cb37329ab2a4e8506d291362930d, type: 2}
+    - target: {fileID: 9116666080852872359, guid: 773c3e26e46ecb6488b496ae42e4c186, type: 3}
       propertyPath: MusicSlider
       value: 
       objectReference: {fileID: 313072351}
+    - target: {fileID: 9116666080852872359, guid: 773c3e26e46ecb6488b496ae42e4c186, type: 3}
+      propertyPath: bgmVolumeParameter
+      value: Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116666080852872359, guid: 773c3e26e46ecb6488b496ae42e4c186, type: 3}
+      propertyPath: sfxVolumeParameter
+      value: SFX
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773c3e26e46ecb6488b496ae42e4c186, type: 3}

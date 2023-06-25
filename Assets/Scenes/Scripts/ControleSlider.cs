@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ControleSlider : MonoBehaviour
 {
-    public GameObject AudioSetting;
+ /*   public GameObject AudioSetting;
     public void Start() {
         // Recupera o valor atual do volume do grupo de áudio Music
         if (AudioSettings.instancia.mixer.GetFloat("SFX", out float volume)) {
@@ -15,7 +15,7 @@ public class ControleSlider : MonoBehaviour
         if (AudioSettings.instancia.mixer.GetFloat("Music", out float volume2)) {
            // MusicSlider.value = volume2;
         }
-    }
+    }*/
 
 
     

@@ -22,21 +22,10 @@ public class AudioManager : MonoBehaviour
     
 
 
-    private void Awake()
-    {
-        // Verifica se já existe uma instância do AudioManager
-        if (instancia == null)
-        {
-            // Se não existir, atribui esta instância à variável estática
+    void Awake() {
+        if (instancia == null) {
             instancia = this;
-            DontDestroyOnLoad(gameObject); // Mantém o objeto AudioManager ao mudar de cena
         }
-        else
-        {
-            // Se já existir uma instância, destrói este objeto para evitar duplicatas
-            Destroy(gameObject);
-        }
-        //LoadVolume();
     }
 
     private void Start()

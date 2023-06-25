@@ -147,7 +147,7 @@ MonoBehaviour:
   tempoTexturaDano: 0.6
   itemVida: {fileID: 0}
   chanceItemVida: 33.9
-  itemvidaprefab: {fileID: 6631204380572736718, guid: 734452c81635e9c4c9e3f6f93392b734, type: 3}
+  itemvidaprefab: {fileID: 5007383962051770755, guid: d5d1713d0d7f52547abb0e7f70d812f8, type: 3}
   distMinimaEntreInimigos: 5
   desvioForca: 1
 --- !u!114 &4650023587080931423
