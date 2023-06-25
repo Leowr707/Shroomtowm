@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8460435951189144543}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.03, y: 1.18, z: 0}
+  m_LocalPosition: {x: 0.0154, y: 0.1495, z: -0.0051}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 8460435952226022822}
   - component: {fileID: 8460435952226022826}
   - component: {fileID: 8460435952226022827}
-  - component: {fileID: 8460435952226022820}
   - component: {fileID: 8460435952226022821}
   - component: {fileID: 8460435952226022825}
+  - component: {fileID: 1783132700799183099}
   m_Layer: 0
   m_Name: InimigoMissil
   m_TagString: Untagged
@@ -59,9 +59,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8460435952226022823}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -25.021599, y: -7.58, z: -0.22483346}
-  m_LocalScale: {x: 0.7367, y: 0.7367, z: 0.7367}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8460435951189144542}
@@ -75,7 +75,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8460435952226022823}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2311771990477229878, guid: 3dbc260bf21a0c749958c4029e9caf75, type: 3}
 --- !u!23 &8460435952226022827
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -96,7 +96,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1107610367bdbb04a9744ff95a257aed, type: 2}
+  - {fileID: 2100000, guid: 248d1f3317d740544bc5bb906ac946c7, type: 2}
+  - {fileID: 2100000, guid: 0d0e0b29ca8d97c43a4d4da859f05ec8, type: 2}
+  - {fileID: 2100000, guid: 662f65bb1d269cf4f900584a659f595f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,20 +120,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8460435952226022820
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8460435952226022823}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8460435952226022821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +164,16 @@ MonoBehaviour:
   spawnPointDoTiroInimigo: {fileID: 8460435951189144543}
   ativarTiro: 1
   tempoParaDestruicao: 8
+--- !u!65 &1783132700799183099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460435952226022823}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08, y: 0.2792133, z: 0.40327168}
+  m_Center: {x: -0.0011550905, y: -0.006765038, z: 0.000000022351742}

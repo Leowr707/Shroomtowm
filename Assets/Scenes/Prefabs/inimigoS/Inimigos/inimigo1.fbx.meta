@@ -3,7 +3,22 @@ guid: 3a4ca0dd7ac7acd43b9e36ace71e492c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Colors
+    second: {fileID: 2100000, guid: fcdbd8da9ede0dd4eadced48466f6b6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: InimigoBase
+    second: {fileID: 2100000, guid: 0d0e0b29ca8d97c43a4d4da859f05ec8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Inimigo_Janela
+    second: {fileID: 2100000, guid: 828e24759a81c9d40b0e3da1c1e990ab, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
