@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class InimigoMissil : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class InimigoMissil : MonoBehaviour
     public GameObject MorteFx;
     public delegate void EnemyKilled();
     public static event EnemyKilled OnEnemyKilled;
+
+    public GameObject particlePrefab;
+    public CinemachineImpulseSource source;
 
     [SerializeField] private AudioSource SomMorte;
 
@@ -71,7 +75,7 @@ public class InimigoMissil : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "tiroPlayer" || other.transform.tag == "Player")
+        if (other.transform.tag == "tiroPlayer")
         {
             Destroy(other.gameObject);
             vida = vida - 1;
@@ -86,10 +90,12 @@ public class InimigoMissil : MonoBehaviour
                 // Destr�i esse gameObject quando a vida dele chegar em 0
                 GameManager.instancia.InimigosMissilMortos(1);
                 SoltarItemVida();
+                Instantiate(particlePrefab, transform.position, transform.rotation);
+                source.GenerateImpulse();
                 Destroy(this.gameObject);
                 GameManager.instancia.adicionarPontos(recompensaPontos);
                 AudioManager.instancia.TocarSomMorte();
-                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
+                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f); 
 
 
             }
@@ -116,9 +122,14 @@ public class InimigoMissil : MonoBehaviour
             if (vida <= 0)
             {
                 // Destr�i esse gameObject quando a vida dele chegar em 0
+                GameManager.instancia.InimigosMissilMortos(1);
                 SoltarItemVida();
-                SomMorte.Play();
+                Instantiate(particlePrefab, transform.position, transform.rotation);
+                source.GenerateImpulse();
                 Destroy(this.gameObject);
+                GameManager.instancia.adicionarPontos(recompensaPontos);
+                AudioManager.instancia.TocarSomMorte();
+                AudioManager.instancia.GetComponent<AudioSource>().PlayOneShot(AudioManager.instancia.explosaoSFX, 0.5f);
 
             }
         }

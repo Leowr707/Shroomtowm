@@ -138,6 +138,8 @@ MonoBehaviour:
   somMorte: {fileID: 0}
   waveManager: {fileID: 0}
   MorteFx: {fileID: 0}
+  particlePrefab: {fileID: 0}
+  source: {fileID: 0}
   SomMorte: {fileID: 0}
   vida: 2
   materialDano: {fileID: 2100000, guid: c09d35c7ad9c1df4aa2866dbdfd74f49, type: 2}
