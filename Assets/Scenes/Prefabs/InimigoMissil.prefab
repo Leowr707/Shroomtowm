@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cdTiroInimigo: 2
   distanciaMinimaDeDisparo: 60
-  prefabTiroInimigo: {fileID: 2811378279378448993, guid: 9ed590c051133534cb28da1ad6df8a41, type: 3}
+  prefabTiroInimigo: {fileID: 7834225342187921458, guid: f07c1b587b8456849ba824b48255cdbb, type: 3}
   spawnPointDoTiroInimigo: {fileID: 8460435951189144543}
   ativarTiro: 1
   tempoParaDestruicao: 8
